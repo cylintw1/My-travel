@@ -7,19 +7,28 @@
     <style>
         :root {
             --primary: #1a73e8;
-            --bg: #f8f9fa;
+            --primary-dark: #1352a2;
+            --bg: #f1f3f4;
             --card-bg: #ffffff;
-            --text: #3c4043;
-            --accent: #e8f0fe;
+            --text-main: #202124;
+            --text-sub: #5f6368;
+            --tag-blue: #e8f0fe;
+            --tag-blue-text: #1a73e8;
+            --tag-green: #e6f4ea;
+            --tag-green-text: #137333;
+            --tag-orange: #fef7e0;
+            --tag-orange-text: #b06000;
         }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.5;
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
         }
+
         .header {
             background-color: var(--primary);
             color: white;
@@ -27,46 +36,122 @@
             text-align: center;
             position: sticky;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-        .header h1 { margin: 0; font-size: 1.4rem; }
-        .header p { margin: 5px 0 0 0; font-size: 0.9rem; opacity: 0.9; }
-        
-        .container { padding: 15px; max-width: 600px; margin: 0 auto; }
-        
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.35rem;
+            letter-spacing: 0.5px;
+        }
+
+        .header p {
+            margin: 6px 0 0 0;
+            font-size: 0.85rem;
+            opacity: 0.85;
+        }
+
+        .container {
+            padding: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
         .card {
             background: var(--card-bg);
-            border-radius: 12px;
-            padding: 18px;
+            border-radius: 16px;
+            padding: 20px;
             margin-bottom: 20px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-            border: 1px solid #dee2e6;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border: 1px solid #e0e0e0;
         }
+
         .day-tag {
-            background-color: var(--accent);
-            color: var(--primary);
-            padding: 4px 10px;
-            border-radius: 20px;
+            background-color: var(--tag-blue);
+            color: var(--tag-blue-text);
+            padding: 5px 12px;
+            border-radius: 30px;
             font-size: 0.85rem;
-            font-weight: bold;
+            font-weight: 700;
             display: inline-block;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
-        .day-title { margin: 0 0 12px 0; font-size: 1.2rem; color: #1352a2; }
-        
-        .section-title { font-weight: bold; color: #202124; margin-top: 10px; display: flex; align-items: center; }
-        .section-content { margin: 3px 0 12px 0; font-size: 0.95rem; }
-        
-        .badge-food { background: #e6f4ea; color: #137333; padding: 2px 6px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
-        .badge-tip { background: #fef7e0; color: #b06000; padding: 2px 6px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
+
+        .day-title {
+            margin: 0 0 16px 0;
+            font-size: 1.25rem;
+            color: var(--primary-dark);
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .section {
+            margin-bottom: 16px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin: 0 0 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .section-content {
+            font-size: 0.92rem;
+            color: var(--text-sub);
+            margin: 0;
+            padding-left: 4px;
+            line-height: 1.6;
+        }
+
+        .badge {
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        .badge-weather { background-color: #e8f0fe; color: #1a73e8; }
+        .badge-food { background-color: var(--tag-green); color: var(--tag-green-text); }
+        .badge-tip { background-color: var(--tag-orange); color: var(--tag-orange-text); }
+
+        .food-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #34a853;
+            padding: 10px 12px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 6px;
+        }
+
+        .food-box-title {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--tag-green-text);
+            margin-bottom: 4px;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: #eeeeee;
+            margin: 14px 0;
+        }
     </style>
 </head>
 <body>
 
     <div class="header">
         <h1>🌐 GoWest! 美西三城隨身助手</h1>
-        <p>📅 2026/07/18 - 07/27 | 星宇航空系列</p>
+        <p>📅 2026/07/18 - 07/27 | 星宇航空系列團</p>
     </div>
 
     <div class="container">
@@ -75,93 +160,230 @@
         <div class="card">
             <span class="day-tag">Day 1 · 7/18 (六)</span>
             <h3 class="day-title">台灣桃園 ➔ 舊金山霧都啟航</h3>
-            <p class="section-title">📍 行程焦點</p>
-            <p class="section-content">桃園機場集合，搭乘星宇航空 JX012（00:05起飛）飛越國際換日線，美西時間 7/18 晚上 21:00 抵達舊金山。</p>
-            <p class="section-title"><span class="badge-food">🍔 餐食</span></p>
-            <p class="section-content">早：X / 中：X / 晚：機上精緻套餐</p>
+            <div class="section">
+                <p class="section-title">📍 行程焦點</p>
+                <p class="section-content">桃園機場集合，搭乘星宇航空 JX012（00:05起飛）飛越國際換日線，於美西時間 7/18 晚上 21:00 抵達舊金山，隨後入住飯店休息。</p>
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <p class="section-title"><span class="badge badge-weather">🌤️ 氣溫與穿著 (12°C - 22°C)</span></p>
+                <p class="section-content">機上與舊金山夜間體感偏冷。建議穿著舒適長庫、大學T，並隨身攜帶保暖連帽外套下機時禦寒。</p>
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <p class="section-title"><span class="badge badge-food">🍔 餐食配置</span></p>
+                <p class="section-content">早：X / 中：X / 晚：機上精緻套餐</p>
+            </div>
         </div>
 
         <!-- Day 2 -->
         <div class="card">
             <span class="day-tag">Day 2 · 7/19 (日)</span>
             <h3 class="day-title">舊金山經典漫遊（惡魔島＋打卡聖地）</h3>
-            <p class="section-title">📍 行程焦點</p>
-            <p class="section-content">藝術宮 ➔ 金門大橋 ➔ 漁人碼頭 ➔ 惡魔島遊船登島（探秘《絕地任務》場景） ➔ 九曲花街 ➔ 市政廳。</p>
-            <p class="section-title"><span class="badge-food">🍔 餐食</span></p>
-            <p class="section-content">早：飯店內用 / 中：漁人碼頭西式螃蟹餐 / 晚：中式料理七菜一湯</p>
+            <div class="section">
+                <p class="section-title">📍 行程焦點</p>
+                <p class="section-content">藝術宮 ➔ 金門大橋 ➔ 漁人碼頭 ➔ 惡魔島遊船登島（探秘《絕地任務》場景） ➔ 九曲花街 ➔ 市政廳打卡。</p>
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <p class="section-title"><span class="badge badge-weather">🌤️ 氣溫與穿著 (12°C - 22°C)</span></p>
+                <p class="section-content">舊金山海風極強。請務必穿著短袖/薄長袖，外搭<strong>防風防潑水夾克</strong>與長褲，以免海邊吹風受涼。</p>
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <p class="section-title"><span class="badge badge-food">🍔 餐食配置</span></p>
+                <p class="section-content">早：飯店內用 / 中：漁人碼頭西式螃蟹餐 / 晚：中式料理七菜一湯</p>
+            </div>
         </div>
 
         <!-- Day 3 -->
         <div class="card">
             <span class="day-tag">Day 3 · 7/20 (一)</span>
             <h3 class="day-title">舊金山 ➔ 優勝美地國家公園 ➔ 佛雷斯諾</h3>
-            <p class="section-title">📍 行程焦點</p>
-            <p class="section-content">世界自然遺產「優勝美地國家公園」（造訪優勝美地瀑布、船長巨岩、新娘面紗瀑布、隧道觀景點），隨後前往中加州佛雷斯諾。</p>
-            <p class="section-title"><span class="badge-food">🍔 餐食</span></p>
-            <p class="section-content">早：飯店內用 / <span class="badge-tip">中：園區自理（推薦 Degnan's Kitchen 披薩三明治）</span> / 晚：Applebee's 美式風味餐</p>
+            <div class="section">
+                <p class="section-title">📍 行程焦點</p>
+                <p class="section-content">朝聖世界自然遺產「優勝美地國家公園」，飽覽優勝美地瀑布、單體花崗岩船長巨岩、新娘面紗瀑布與隧道觀觀點，隨後前往中加州佛雷斯諾。</p>
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <p class="section-title"><span class="badge badge-weather">🌤️ 氣溫與穿著 (15°C - 32°C)</span></p>
+                <p class="section-content">山區清晨涼爽、正午曝曬。建議穿排汗短袖、運動長褲、<strong>防滑運動鞋/健走鞋</strong>（岩石步道易滑），帶薄外衣備用。</p>
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <p class="section-title"><span class="badge badge-tip">💡 自理餐指南 (中餐自理)</span></p>
+                <div class="food-box">
+                    <div class="food-box-title">推薦 1：Degnan's Kitchen (Yosemite Village)</div>
+                    <div class="section-content">園區內最大輕食點，主打現烤窯烤披薩、熱壓三明治與咖啡，出餐快座位多。</div>
+                    <div class="food-box-title" style="margin-top:6px;">推薦 2：Yosemite Valley Grocery Store (國家公園超市)</div>
+                    <div class="section-content">直接到熟食區買現炸熱烤雞、冷盤三明治與水果拼盤，去戶外森林長椅野餐最過癮！</div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <p class="section-title"><span class="badge badge-food">🍔 餐食配置</span></p>
+                <p class="section-content">早：飯店內用 / 中：園區自理 / 晚：Applebee's 美式風味餐</p>
+            </div>
         </div>
 
         <!-- Day 4 -->
         <div class="card">
             <span class="day-tag">Day 4 · 7/21 (二)</span>
             <h3 class="day-title">佛雷斯諾 ➔ 巴斯托 Outlet ➔ 彩虹巨石 ➔ 拉斯維加斯</h3>
-            <p class="section-title">📍 行程焦點</p>
-            <p class="section-content">巴斯托名牌大賣場（血拼 1.5 小時） ➔ 七彩巨石（Seven Magic Mountains 網美裝置藝術） ➔ 勇闖不夜城拉斯維加斯。</p>
-            <p class="section-title"><span class="badge-food">🍔 餐食</span></p>
-            <p class="section-content">早：飯店內用 / <span class="badge-tip">中：Outlet自理（衝加州傳奇 In-N-Out 漢堡！）</span> / 晚：中式料理七菜一湯</p>
+            <div class="section">
+                <p class="section-title">📍 行程焦點</p>
+                <p class="section-content">橫跨加州內陸 ➔ 巴斯托名牌大賣場（Outlets At Barstow 血拼 1.5 小時） ➔ 七彩巨石（Seven Magic Mountains 荒漠網美公共藝術） ➔ 勇闖不夜城拉斯維加斯。</p>
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <p class="section-title"><span class="badge badge-weather">🌤️ 氣溫與穿著 (20°C - 43°C)</span></p>
+                <p class="section-content">沙漠熱浪來襲！室外極熱但 Outlet 與賭場冷氣如冰庫。穿著全套夏裝，但<strong>隨身必帶抗UV防冷薄外套</strong>。墨鏡、遮陽帽、防曬乳必備。</p>
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <p class="section-title"><span class="badge badge-tip">💡 自理餐指南 (中餐自理)</span></p>
+                <div class="food-box">
+                    <div class="food-box-title">激推：In-N-Out Burger (加州傳奇漢堡，位於Outlet外圍)</div>
+                    <div class="section-content">現點現做極為超值！老饕必點隱藏版 <strong>Animal Style</strong>（漢堡肉用芥末煎過加炒洋蔥；薯條淋上濃郁起司與秘製醬汁），出餐速度極快。</div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <p class="section-title"><span class="badge badge-food">🍔 餐食配置</span></p>
+                <p class="section-content">早：飯店內用 / 中：購物城自理 / 晚：中式料理七菜一湯</p>
+            </div>
         </div>
 
         <!-- Day 5 -->
         <div class="card">
             <span class="day-tag">Day 5 · 7/22 (三)</span>
             <h3 class="day-title">拉斯維加斯 ➔ 大峽谷國家公園（南緣＋東緣）➔ 佩姬小鎮</h3>
-            <p class="section-title">📍 行程焦點</p>
-            <p class="section-content">世界七大奇景大峽谷！漫步南緣最美遠眺點馬德點 ➔ 大峽谷東緣參觀印地安瞭望塔 ➔ 前往猶他與亞利桑那交界的佩姬小鎮。</p>
-            <p class="section-title"><span class="badge-food">🍔 餐食</span></p>
-            <p class="section-content">早：中式稀飯餐盒 / <span class="badge-tip">中：國道自理（沿途公路速食或 Maswik 美食街）</span> / 晚：鄉村風情美式牛排餐</p>
+            <div class="section">
+                <p class="section-title">📍 行程焦點</p>
+                <p class="section-content">奔向世界七大奇景大峽谷！漫步南緣經典遠眺點馬德點 ➔ 大峽谷東緣參觀印地安瞭望塔 ➔ 前往猶他與亞利桑那交界的佩姬小鎮。</p>
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <p class="section-title"><span class="badge badge-weather">🌤️ 氣溫與穿著 (14°C - 35°C)</span></p>
+                <p class="section-content">大峽谷海拔高（約2100m）日夜溫差極大。採短袖加防曬外套的洋蔥式穿法。<strong>嚴禁穿拖鞋或高跟鞋</strong>，需穿包頭球鞋防碎石風沙。</p>
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <p class="section-title"><span class="badge badge-tip">💡 自理餐指南 (中餐自理)</span></p>
+                <div class="food-box">
+                    <div class="food-box-title">推薦 1：Tusayan 小鎮公路速食 (大峽谷入口前)</div>
+                    <div class="section-content">中途休息站的經典美式連鎖，Wendy's 的培根起司堡出餐迅速且分量飽足。</div>
+                    <div class="food-box-title" style="margin-top:6px;">推薦 2：Maswik Food Court (大峽谷南緣園區內)</div>
+                    <div class="section-content">大型自助美食廣場，提供墨西哥捲餅、美式漢堡與亞洲熱炒，拿了直接結帳最省時。</div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <p class="section-title"><span class="badge badge-food">🍔 餐食配置</span></p>
+                <p class="section-content">早：中式稀飯餐盒 / 中：國道自理 / 晚：鄉村風情美式牛排餐</p>
+            </div>
         </div>
 
         <!-- Day 6 -->
         <div class="card">
             <span class="day-tag">Day 6 · 7/23 (四)</span>
-            <h3 class="day-title">佩姬私房秘境 ➔ 格蘭水壩 ➔ 拉斯維加斯</h3>
-            <p class="section-title">📍 行程焦點</p>
-            <p class="section-content">魔幻橘紅光影「羚羊峽谷」 ➔ 震撼人心「馬蹄灣」300公尺絕壁俯瞰 ➔ 途經格蘭峽谷水壩與包威爾湖 ➔ 奔回拉斯維加斯。</p>
-            <p class="section-title"><span class="badge-food">🍔 餐食</span></p>
-            <p class="section-content">早：飯店內用 / 中：中式自助餐 / 晚：紅龍蝦餐廳（炙烤龍蝦＋香煎鮭魚饗宴）</p>
+            <h3 class="day-title">佩姬私房秘境探險 ➔ 格蘭水壩 ➔ 拉斯維加斯</h3>
+            <div class="section">
+                <p class="section-title">📍 行程焦點</p>
+                <p class="section-content">驚艷奇蹟「羚羊峽谷」（捕捉地表最神祕橘紅光影） ➔ 震撼人心「馬蹄灣」300公尺絕壁俯瞰 ➔ 途經格蘭峽谷水壩與包威爾湖 ➔ 飛奔回拉斯維加斯。</p>
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <p class="section-title"><span class="badge badge-weather">🌤️ 氣溫與穿著 (22°C - 38°C)</span></p>
+                <p class="section-content">荒漠地形，極度曝曬風沙大。建議穿著<strong>亮色系短袖</strong>（拍橘紅峽谷對比超美）、涼爽長褲與<strong>防滑包鞋</strong>（羚羊谷需爬陡峭鐵梯）。可戴口罩防沙。</p>
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <p class="section-title"><span class="badge badge-food">🍔 餐食配置</span></p>
+                <p class="section-content">早：飯店內用 / 中：中式自助餐 / 晚：紅龍蝦餐廳（炙烤龍蝦＋香煎鮭魚頂級饗宴）</p>
+            </div>
         </div>
 
         <!-- Day 7 -->
         <div class="card">
             <span class="day-tag">Day 7 · 7/24 (五)</span>
             <h3 class="day-title">拉斯維加斯北口 Outlet ➔ 天使之城洛杉磯</h3>
-            <p class="section-title">📍 行程焦點</p>
-            <p class="section-content">拉斯維加斯名牌大賣場（Premium Outlets North 激戰 3 小時） ➔ 驅車向西前往電影之城洛杉磯。</p>
-            <p class="section-title"><span class="badge-food">🍔 餐食</span></p>
-            <p class="section-content">早：Denny's 或 IHOP 美式早餐 / <span class="badge-tip">中：Outlet自理（推薦 Shake Shack 紐約星級漢堡）</span> / 晚：韓式鐵板燒＋嫩豆腐鍋</p>
+            <div class="section">
+                <p class="section-title">📍 行程焦點</p>
+                <p class="section-content">挑戰拉斯維加斯北口名牌大賣場（Premium Outlets North，擁有 175 家名牌專賣店，激戰 3 小時！） ➔ 驅車向西前往電影之城洛杉磯。</p>
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <p class="section-title"><span class="badge badge-weather">🌤️ 氣溫與穿著 (18°C - 35°C)</span></p>
+                <p class="section-content">全天血拼步行大考驗。建議穿吸汗短袖、修身長褲，並換上<strong>你鞋櫃裡最厲害的戰鞋（健走球鞋）</strong>。</p>
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <p class="section-title"><span class="badge badge-tip">💡 自理餐指南 (中餐自理)</span></p>
+                <div class="food-box">
+                    <div class="food-box-title">推薦 1：Shake Shack (來自紐約的星級漢堡)</div>
+                    <div class="section-content">肉質鮮嫩多汁，使用馬鈴薯麵糰製成的麵包超香軟。必點招牌雙層牛肉堡（ShackBurger Double）配起司波浪薯條與濃郁奶昔。</div>
+                    <div class="food-box-title" style="margin-top:6px;">推薦 2：Panda Express (熊貓快餐)</div>
+                    <div class="section-content">全美最大美式中餐，炒麵/炒飯搭配經典「橘子雞（Orange Chicken）」，酸甜酥脆最能撫慰亞洲胃。</div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <p class="section-title"><span class="badge badge-food">🍔 餐食配置</span></p>
+                <p class="section-content">早：Denny's 或 IHOP 美式早餐 / 中：Outlet自理 / 晚：韓式鐵板燒＋嫩豆腐鍋</p>
+            </div>
         </div>
 
         <!-- Day 8 -->
         <div class="card">
             <span class="day-tag">Day 8 · 7/25 (六)</span>
             <h3 class="day-title">洛杉磯環球影城全日狂歡 ➔ 好萊塢星光大道 ➔ 機場</h3>
-            <p class="section-title">📍 行程焦點</p>
-            <p class="section-content">好萊塢環球影城瘋玩整天（必衝任天堂與哈利波特） ➔ 朝聖好萊塢星光大道、中國戲院巨星手印 ➔ 前往洛杉磯國際機場準備登機。</p>
-            <p class="section-title"><span class="badge-food">🍔 餐食</span></p>
-            <p class="section-content">早：飯店內用 / <span class="badge-tip">中：影城自理（三根掃帚喝奶油啤酒）</span> / <span class="badge-tip">晚：影城外自理（推薦阿甘正傳主題蝦餐廳）</span></p>
+            <div class="section">
+                <p class="section-title">📍 行程焦點</p>
+                <p class="section-content">好萊塢環球影城瘋玩整天（必衝超級任天堂世界、哈利波特魔法世界） ➔ 朝聖好萊塢星光大道、中國戲院巨星手印、杜比劇院 ➔ 前往洛杉磯國際機場準備登機。</p>
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <p class="section-title"><span class="badge badge-weather">🌤️ 氣溫與穿著 (18°C - 31°C)</span></p>
+                <p class="section-content">南加州陽光充足，早晚偏涼，樂園內全天高達上萬步。穿著色彩鮮豔好拍照的短袖、彈性長褲與好走的鞋。多帶一件薄外套放遊覽車上供夜間去機場穿。</p>
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <p class="section-title"><span class="badge badge-tip">💡 自理餐指南 (中餐與晚餐自理)</span></p>
+                <div class="food-box">
+                    <div class="food-box-title">【午餐推薦 · 影城園區內】</div>
+                    <div class="section-content">1. <strong>哈利波特區 - 三根掃帚</strong>：神還原英式小酒館。必點「大飽口福饗宴」烤雞烤肋排拼盤，並來一杯冰涼的奶油啤酒（不含酒精）。<br>2. <strong>任天堂世界 - 奇諾比奧咖啡店</strong>：一入園需先掃碼預約，瑪利歐造型漢堡與問號方塊提拉米蘇精緻又好拍。</div>
+                    <div class="food-box-title" style="margin-top:6px;">【晚餐推薦 · 影城外 CityWalk 商店街】</div>
+                    <div class="section-content"><strong>Bubba Gump Shrimp Co. (阿甘正傳主題蝦餐廳)</strong>：以經典電影為主題，鮮蝦天婦羅、炸蝦盤美味豐富，翻轉桌上牌子呼叫服務生好玩有氣氛，為美西行完美收尾！</div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <p class="section-title"><span class="badge badge-food">🍔 餐食配置</span></p>
+                <p class="section-content">早: 飯店內用 / 中: 影城自理 / 晚: 好萊塢或影城自理</p>
+            </div>
         </div>
 
         <!-- Day 9-10 -->
         <div class="card">
             <span class="day-tag">Day 9-10 · 7/26 (日) - 7/27 (一)</span>
             <h3 class="day-title">橫跨太平洋 ➔ 溫暖的家</h3>
-            <p class="section-title">📍 行程焦點</p>
-            <p class="section-content">搭乘星宇航空 JX001（00:35起飛）飛往台北。因飛越國際換日線，於 7/27 凌晨 05:05 順利降落桃園機場，結束精彩的美西行！</p>
-            <p class="section-title"><span class="badge-food">🍔 餐食</span></p>
-            <p class="section-content">機上精緻套餐</p>
+            <div class="section">
+                <p class="section-title">📍 行程焦點</p>
+                <p class="section-content">搭乘星宇航空 JX001（00:35起飛）飛往台北。因飛越國際換日線，於 7/27 凌晨 05:05 順利降落桃園機場，回到溫暖的家。</p>
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <p class="section-title"><span class="badge badge-weather">🌤️ 氣溫與穿著</span></p>
+                <p class="section-content">長途機上空調較冷。建議換上全套最寬鬆、沒有束縛感的長褲、連帽衛衣與休閒鞋，在飛機上好好睡一覺。</p>
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <p class="section-title"><span class="badge badge-food">🍔 餐食配置</span></p>
+                <p class="section-content">早：機上套餐 / 中：機上套餐 / 晚：X</p>
+            </div>
         </div>
 
     </div>
-
 </body>
 </html>
