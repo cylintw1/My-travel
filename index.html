@@ -3,112 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的旅遊隨身助手</title>
-    
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="manifest" href="data:application/manifest+json,{%22name%22:%22旅遊助手%22,%22short_name%22:%22旅遊助手%22,%22start_url%22:%22.%22,%22display%22:%22standalone%22,%22background_color%22:%22%23f3f4f6%22,%22theme_color%22:%22%232563eb%22}">
-
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>GoWest! 美西三城隨身助手</title>
+    <style>
+        :root {
+            --primary: #1a73e8;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text: #3c4043;
+            --accent: #e8f0fe;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+        }
+        .header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .header h1 { margin: 0; font-size: 1.4rem; }
+        .header p { margin: 5px 0 0 0; font-size: 0.9rem; opacity: 0.9; }
+        
+        .container { padding: 15px; max-width: 600px; margin: 0 auto; }
+        
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            border: 1px solid #dee2e6;
+        }
+        .day-tag {
+            background-color: var(--accent);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .day-title { margin: 0 0 12px 0; font-size: 1.2rem; color: #1352a2; }
+        
+        .section-title { font-weight: bold; color: #202124; margin-top: 10px; display: flex; align-items: center; }
+        .section-content { margin: 3px 0 12px 0; font-size: 0.95rem; }
+        
+        .badge-food { background: #e6f4ea; color: #137333; padding: 2px 6px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
+        .badge-tip { background: #fef7e0; color: #b06000; padding: 2px 6px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
+    </style>
 </head>
-<body class="bg-gray-100 text-gray-800 pb-16">
+<body>
 
-    <header class="bg-blue-600 text-white p-4 sticky top-0 shadow-md z-10">
-        <h1 class="text-xl font-bold text-center">🇺🇸 2026 專屬旅遊隨身包</h1>
-        <p class="text-xs text-center opacity-80 mt-1">團號：USC071810JX6P | 離線可用</p>
-    </header>
-
-    <div class="flex overflow-x-auto bg-white p-2 border-b border-gray-200 sticky top-[60px] z-10 hide-scrollbar gap-2">
-        <button onclick="switchDay(1)" id="btn-day-1" class="day-btn px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-semibold shrink-0">Day 1</button>
-        <button onclick="switchDay(2)" id="btn-day-2" class="day-btn px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-semibold shrink-0">Day 2</button>
-        <button onclick="switchDay(3)" id="btn-day-3" class="day-btn px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-semibold shrink-0">Day 3</button>
-        <button onclick="switchDay(4)" id="btn-day-4" class="day-btn px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-semibold shrink-0">Day 4</button>
+    <div class="header">
+        <h1>🌐 GoWest! 美西三城隨身助手</h1>
+        <p>📅 2026/07/18 - 07/27 | 星宇航空系列</p>
     </div>
 
-    <main class="p-4 max-w-md mx-auto">
-        
-        <div id="content-day-1" class="day-content space-y-4">
-            <div class="bg-gradient-to-br from-amber-50 to-orange-100 p-4 rounded-xl shadow-xs border border-amber-200">
-                <h3 class="font-bold text-amber-800 flex items-center gap-1">☀️ 當日氣象 & 穿著建議</h3>
-                <p class="text-2xl font-extrabold text-amber-900 mt-1">18°C ~ 28°C</p>
-                <p class="text-sm text-amber-700 mt-1">💡 穿著：早晚溫差大，建議採「洋蔥式穿法」。白天短袖，早晚需準備一件薄外套。</p>
-            </div>
-            <div class="bg-white p-4 rounded-xl shadow-xs">
-                <h3 class="font-bold text-blue-800 border-b pb-2 mb-2">📍 今日行程景點</h3>
-                <ul class="space-y-2 text-sm text-gray-700">
-                    <li class="flex gap-2">⏱️ <span class="font-semibold">上午：</span> 桃園機場集合 ➔ 登機出發</li>
-                    <li class="flex gap-2">⏱️ <span class="font-semibold">下午：</span> 抵達目的地、專車接送至飯店 Check-in</li>
-                </ul>
-            </div>
-            <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-xl shadow-xs">
-                <h3 class="font-bold text-emerald-800 flex items-center gap-1">🍔 午/晚餐自理推薦</h3>
-                <div class="mt-2 space-y-2 text-sm">
-                    <div class="bg-white p-2 rounded-md border border-emerald-100">
-                        <p class="font-bold text-gray-900">推薦 1：In-N-Out Burger</p>
-                        <p class="text-gray-600 text-xs mt-0.5">必點 Secret Menu 的 Animal Style 漢堡與薯條！</p>
-                    </div>
-                </div>
-            </div>
+    <div class="container">
+
+        <!-- Day 1 -->
+        <div class="card">
+            <span class="day-tag">Day 1 · 7/18 (六)</span>
+            <h3 class="day-title">台灣桃園 ➔ 舊金山霧都啟航</h3>
+            <p class="section-title">📍 行程焦點</p>
+            <p class="section-content">桃園機場集合，搭乘星宇航空 JX012（00:05起飛）飛越國際換日線，美西時間 7/18 晚上 21:00 抵達舊金山。</p>
+            <p class="section-title"><span class="badge-food">🍔 餐食</span></p>
+            <p class="section-content">早：X / 中：X / 晚：機上精緻套餐</p>
         </div>
 
-        <div id="content-day-2" class="day-content hidden space-y-4">
-            <div class="bg-gradient-to-br from-blue-50 to-cyan-100 p-4 rounded-xl shadow-xs border border-blue-200">
-                <h3 class="font-bold text-blue-800">☁️ 當日氣象 & 穿著建議</h3>
-                <p class="text-2xl font-extrabold text-blue-900 mt-1">15°C ~ 22°C</p>
-                <p class="text-sm text-blue-700 mt-1">💡 穿著：今日多雲局部偶雨，請攜帶折疊傘，並穿著防風外套。</p>
-            </div>
-            <div class="bg-white p-4 rounded-xl shadow-xs">
-                <h3 class="font-bold text-blue-800 border-b pb-2 mb-2">📍 今日行程景點</h3>
-                <ul class="space-y-2 text-sm text-gray-700">
-                    <li class="flex gap-2">⏱️ <span class="font-semibold">全天：</span> 暢遊經典市區景點（自由女神、時代廣場）</li>
-                </ul>
-            </div>
-            <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-xl shadow-xs">
-                <h3 class="font-bold text-emerald-800">🍔 午/晚餐自理推薦</h3>
-                <div class="mt-2 space-y-2 text-sm">
-                    <div class="bg-white p-2 rounded-md border border-emerald-100">
-                        <p class="font-bold text-gray-900">推薦 1：Shake Shack</p>
-                        <p class="text-gray-600 text-xs mt-0.5">經典招牌起司漢堡與波浪薯條，奶昔必點！</p>
-                    </div>
-                </div>
-            </div>
+        <!-- Day 2 -->
+        <div class="card">
+            <span class="day-tag">Day 2 · 7/19 (日)</span>
+            <h3 class="day-title">舊金山經典漫遊（惡魔島＋打卡聖地）</h3>
+            <p class="section-title">📍 行程焦點</p>
+            <p class="section-content">藝術宮 ➔ 金門大橋 ➔ 漁人碼頭 ➔ 惡魔島遊船登島（探秘《絕地任務》場景） ➔ 九曲花街 ➔ 市政廳。</p>
+            <p class="section-title"><span class="badge-food">🍔 餐食</span></p>
+            <p class="section-content">早：飯店內用 / 中：漁人碼頭西式螃蟹餐 / 晚：中式料理七菜一湯</p>
         </div>
 
-        </main>
+        <!-- Day 3 -->
+        <div class="card">
+            <span class="day-tag">Day 3 · 7/20 (一)</span>
+            <h3 class="day-title">舊金山 ➔ 優勝美地國家公園 ➔ 佛雷斯諾</h3>
+            <p class="section-title">📍 行程焦點</p>
+            <p class="section-content">世界自然遺產「優勝美地國家公園」（造訪優勝美地瀑布、船長巨岩、新娘面紗瀑布、隧道觀景點），隨後前往中加州佛雷斯諾。</p>
+            <p class="section-title"><span class="badge-food">🍔 餐食</span></p>
+            <p class="section-content">早：飯店內用 / <span class="badge-tip">中：園區自理（推薦 Degnan's Kitchen 披薩三明治）</span> / 晚：Applebee's 美式風味餐</p>
+        </div>
 
-    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-2 flex justify-around text-xs shadow-lg max-w-md mx-auto">
-        <a href="tel:0912345678" class="flex flex-col items-center gap-1 text-gray-600">
-            <span>📞</span><span>電話聯絡領隊</span>
-        </a>
-        <div onclick="alert('集合時間：明早 08:30 飯店大廳')" class="flex flex-col items-center gap-1 text-gray-600 cursor-pointer">
-            <span>⏰</span><span>明日集合</span>
-        </a>
-    </nav>
+        <!-- Day 4 -->
+        <div class="card">
+            <span class="day-tag">Day 4 · 7/21 (二)</span>
+            <h3 class="day-title">佛雷斯諾 ➔ 巴斯托 Outlet ➔ 彩虹巨石 ➔ 拉斯維加斯</h3>
+            <p class="section-title">📍 行程焦點</p>
+            <p class="section-content">巴斯托名牌大賣場（血拼 1.5 小時） ➔ 七彩巨石（Seven Magic Mountains 網美裝置藝術） ➔ 勇闖不夜城拉斯維加斯。</p>
+            <p class="section-title"><span class="badge-food">🍔 餐食</span></p>
+            <p class="section-content">早：飯店內用 / <span class="badge-tip">中：Outlet自理（衝加州傳奇 In-N-Out 漢堡！）</span> / 晚：中式料理七菜一湯</p>
+        </div>
 
-    <script>
-        function switchDay(dayNumber) {
-            // 隱藏所有天數內容
-            document.querySelectorAll('.day-content').forEach(el => el.classList.add('hidden'));
-            // 顯示點選的天數內容
-            const targetContent = document.getElementById(`content-day-1`); // 這裡依實際天數控制，範例簡化
-            document.getElementById(`content-day-${dayNumber}`).classList.remove('hidden');
+        <!-- Day 5 -->
+        <div class="card">
+            <span class="day-tag">Day 5 · 7/22 (三)</span>
+            <h3 class="day-title">拉斯維加斯 ➔ 大峽谷國家公園（南緣＋東緣）➔ 佩姬小鎮</h3>
+            <p class="section-title">📍 行程焦點</p>
+            <p class="section-content">世界七大奇景大峽谷！漫步南緣最美遠眺點馬德點 ➔ 大峽谷東緣參觀印地安瞭望塔 ➔ 前往猶他與亞利桑那交界的佩姬小鎮。</p>
+            <p class="section-title"><span class="badge-food">🍔 餐食</span></p>
+            <p class="section-content">早：中式稀飯餐盒 / <span class="badge-tip">中：國道自理（沿途公路速食或 Maswik 美食街）</span> / 晚：鄉村風情美式牛排餐</p>
+        </div>
 
-            // 更新按鈕樣式
-            document.querySelectorAll('.day-btn').forEach(btn => {
-                btn.classList.remove('bg-blue-600', 'text-white');
-                btn.classList.add('bg-gray-100', 'text-gray-600');
-            });
-            const activeBtn = document.getElementById(`btn-day-${dayNumber}`);
-            activeBtn.classList.remove('bg-gray-100', 'text-gray-600');
-            activeBtn.classList.add('bg-blue-600', 'text-white');
-        }
+        <!-- Day 6 -->
+        <div class="card">
+            <span class="day-tag">Day 6 · 7/23 (四)</span>
+            <h3 class="day-title">佩姬私房秘境 ➔ 格蘭水壩 ➔ 拉斯維加斯</h3>
+            <p class="section-title">📍 行程焦點</p>
+            <p class="section-content">魔幻橘紅光影「羚羊峽谷」 ➔ 震撼人心「馬蹄灣」300公尺絕壁俯瞰 ➔ 途經格蘭峽谷水壩與包威爾湖 ➔ 奔回拉斯維加斯。</p>
+            <p class="section-title"><span class="badge-food">🍔 餐食</span></p>
+            <p class="section-content">早：飯店內用 / 中：中式自助餐 / 晚：紅龍蝦餐廳（炙烤龍蝦＋香煎鮭魚饗宴）</p>
+        </div>
 
-        // PWA 離線機制：註冊一個虛擬的 Service Worker 騙過手機，讓它允許「加入主畫面」
-        if ('serviceWorker' in navigator) {
-            const swCode = `self.addEventListener('fetch', function(e) { e.respondWith(fetch(e.request)); });`;
-            const blob = new Blob([swCode], {type: 'application/javascript'});
-            navigator.serviceWorker.register(URL.createObjectURL(blob));
-        }
-    </script>
+        <!-- Day 7 -->
+        <div class="card">
+            <span class="day-tag">Day 7 · 7/24 (五)</span>
+            <h3 class="day-title">拉斯維加斯北口 Outlet ➔ 天使之城洛杉磯</h3>
+            <p class="section-title">📍 行程焦點</p>
+            <p class="section-content">拉斯維加斯名牌大賣場（Premium Outlets North 激戰 3 小時） ➔ 驅車向西前往電影之城洛杉磯。</p>
+            <p class="section-title"><span class="badge-food">🍔 餐食</span></p>
+            <p class="section-content">早：Denny's 或 IHOP 美式早餐 / <span class="badge-tip">中：Outlet自理（推薦 Shake Shack 紐約星級漢堡）</span> / 晚：韓式鐵板燒＋嫩豆腐鍋</p>
+        </div>
+
+        <!-- Day 8 -->
+        <div class="card">
+            <span class="day-tag">Day 8 · 7/25 (六)</span>
+            <h3 class="day-title">洛杉磯環球影城全日狂歡 ➔ 好萊塢星光大道 ➔ 機場</h3>
+            <p class="section-title">📍 行程焦點</p>
+            <p class="section-content">好萊塢環球影城瘋玩整天（必衝任天堂與哈利波特） ➔ 朝聖好萊塢星光大道、中國戲院巨星手印 ➔ 前往洛杉磯國際機場準備登機。</p>
+            <p class="section-title"><span class="badge-food">🍔 餐食</span></p>
+            <p class="section-content">早：飯店內用 / <span class="badge-tip">中：影城自理（三根掃帚喝奶油啤酒）</span> / <span class="badge-tip">晚：影城外自理（推薦阿甘正傳主題蝦餐廳）</span></p>
+        </div>
+
+        <!-- Day 9-10 -->
+        <div class="card">
+            <span class="day-tag">Day 9-10 · 7/26 (日) - 7/27 (一)</span>
+            <h3 class="day-title">橫跨太平洋 ➔ 溫暖的家</h3>
+            <p class="section-title">📍 行程焦點</p>
+            <p class="section-content">搭乘星宇航空 JX001（00:35起飛）飛往台北。因飛越國際換日線，於 7/27 凌晨 05:05 順利降落桃園機場，結束精彩的美西行！</p>
+            <p class="section-title"><span class="badge-food">🍔 餐食</span></p>
+            <p class="section-content">機上精緻套餐</p>
+        </div>
+
+    </div>
+
 </body>
 </html>
