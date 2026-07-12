@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的旅遊隨身助手</title>
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="manifest" href="data:application/manifest+json,{%22name%22:%22旅遊助手%22,%22short_name%22:%22旅遊助手%22,%22start_url%22:%22.%22,%22display%22:%22standalone%22,%22background_color%22:%22%23f3f4f6%22,%22theme_color%22:%22%232563eb%22}">
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 pb-16">
+
+    <header class="bg-blue-600 text-white p-4 sticky top-0 shadow-md z-10">
+        <h1 class="text-xl font-bold text-center">🇺🇸 2026 專屬旅遊隨身包</h1>
+        <p class="text-xs text-center opacity-80 mt-1">團號：USC071810JX6P | 離線可用</p>
+    </header>
+
+    <div class="flex overflow-x-auto bg-white p-2 border-b border-gray-200 sticky top-[60px] z-10 hide-scrollbar gap-2">
+        <button onclick="switchDay(1)" id="btn-day-1" class="day-btn px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-semibold shrink-0">Day 1</button>
+        <button onclick="switchDay(2)" id="btn-day-2" class="day-btn px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-semibold shrink-0">Day 2</button>
+        <button onclick="switchDay(3)" id="btn-day-3" class="day-btn px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-semibold shrink-0">Day 3</button>
+        <button onclick="switchDay(4)" id="btn-day-4" class="day-btn px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-semibold shrink-0">Day 4</button>
+    </div>
+
+    <main class="p-4 max-w-md mx-auto">
+        
+        <div id="content-day-1" class="day-content space-y-4">
+            <div class="bg-gradient-to-br from-amber-50 to-orange-100 p-4 rounded-xl shadow-xs border border-amber-200">
+                <h3 class="font-bold text-amber-800 flex items-center gap-1">☀️ 當日氣象 & 穿著建議</h3>
+                <p class="text-2xl font-extrabold text-amber-900 mt-1">18°C ~ 28°C</p>
+                <p class="text-sm text-amber-700 mt-1">💡 穿著：早晚溫差大，建議採「洋蔥式穿法」。白天短袖，早晚需準備一件薄外套。</p>
+            </div>
+            <div class="bg-white p-4 rounded-xl shadow-xs">
+                <h3 class="font-bold text-blue-800 border-b pb-2 mb-2">📍 今日行程景點</h3>
+                <ul class="space-y-2 text-sm text-gray-700">
+                    <li class="flex gap-2">⏱️ <span class="font-semibold">上午：</span> 桃園機場集合 ➔ 登機出發</li>
+                    <li class="flex gap-2">⏱️ <span class="font-semibold">下午：</span> 抵達目的地、專車接送至飯店 Check-in</li>
+                </ul>
+            </div>
+            <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-xl shadow-xs">
+                <h3 class="font-bold text-emerald-800 flex items-center gap-1">🍔 午/晚餐自理推薦</h3>
+                <div class="mt-2 space-y-2 text-sm">
+                    <div class="bg-white p-2 rounded-md border border-emerald-100">
+                        <p class="font-bold text-gray-900">推薦 1：In-N-Out Burger</p>
+                        <p class="text-gray-600 text-xs mt-0.5">必點 Secret Menu 的 Animal Style 漢堡與薯條！</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="content-day-2" class="day-content hidden space-y-4">
+            <div class="bg-gradient-to-br from-blue-50 to-cyan-100 p-4 rounded-xl shadow-xs border border-blue-200">
+                <h3 class="font-bold text-blue-800">☁️ 當日氣象 & 穿著建議</h3>
+                <p class="text-2xl font-extrabold text-blue-900 mt-1">15°C ~ 22°C</p>
+                <p class="text-sm text-blue-700 mt-1">💡 穿著：今日多雲局部偶雨，請攜帶折疊傘，並穿著防風外套。</p>
+            </div>
+            <div class="bg-white p-4 rounded-xl shadow-xs">
+                <h3 class="font-bold text-blue-800 border-b pb-2 mb-2">📍 今日行程景點</h3>
+                <ul class="space-y-2 text-sm text-gray-700">
+                    <li class="flex gap-2">⏱️ <span class="font-semibold">全天：</span> 暢遊經典市區景點（自由女神、時代廣場）</li>
+                </ul>
+            </div>
+            <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-xl shadow-xs">
+                <h3 class="font-bold text-emerald-800">🍔 午/晚餐自理推薦</h3>
+                <div class="mt-2 space-y-2 text-sm">
+                    <div class="bg-white p-2 rounded-md border border-emerald-100">
+                        <p class="font-bold text-gray-900">推薦 1：Shake Shack</p>
+                        <p class="text-gray-600 text-xs mt-0.5">經典招牌起司漢堡與波浪薯條，奶昔必點！</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </main>
+
+    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-2 flex justify-around text-xs shadow-lg max-w-md mx-auto">
+        <a href="tel:0912345678" class="flex flex-col items-center gap-1 text-gray-600">
+            <span>📞</span><span>電話聯絡領隊</span>
+        </a>
+        <div onclick="alert('集合時間：明早 08:30 飯店大廳')" class="flex flex-col items-center gap-1 text-gray-600 cursor-pointer">
+            <span>⏰</span><span>明日集合</span>
+        </a>
+    </nav>
+
+    <script>
+        function switchDay(dayNumber) {
+            // 隱藏所有天數內容
+            document.querySelectorAll('.day-content').forEach(el => el.classList.add('hidden'));
+            // 顯示點選的天數內容
+            const targetContent = document.getElementById(`content-day-1`); // 這裡依實際天數控制，範例簡化
+            document.getElementById(`content-day-${dayNumber}`).classList.remove('hidden');
+
+            // 更新按鈕樣式
+            document.querySelectorAll('.day-btn').forEach(btn => {
+                btn.classList.remove('bg-blue-600', 'text-white');
+                btn.classList.add('bg-gray-100', 'text-gray-600');
+            });
+            const activeBtn = document.getElementById(`btn-day-${dayNumber}`);
+            activeBtn.classList.remove('bg-gray-100', 'text-gray-600');
+            activeBtn.classList.add('bg-blue-600', 'text-white');
+        }
+
+        // PWA 離線機制：註冊一個虛擬的 Service Worker 騙過手機，讓它允許「加入主畫面」
+        if ('serviceWorker' in navigator) {
+            const swCode = `self.addEventListener('fetch', function(e) { e.respondWith(fetch(e.request)); });`;
+            const blob = new Blob([swCode], {type: 'application/javascript'});
+            navigator.serviceWorker.register(URL.createObjectURL(blob));
+        }
+    </script>
+</body>
+</html>
