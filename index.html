@@ -1,370 +1,72 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GoWest! 美西三城隨身助手</title>
-    <style>
-        :root {
-            --primary: #1a73e8;
-            --primary-dark: #1352a2;
-            --bg: #f1f3f4;
-            --card-bg: #ffffff;
-            --text-main: #202124;
-            --text-sub: #5f6368;
-            --tag-blue: #e8f0fe;
-            --tag-blue-text: #1a73e8;
-            --tag-green: #e6f4ea;
-            --tag-green-text: #137333;
-            --tag-orange: #fef7e0;
-            --tag-orange-text: #b06000;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg);
-            color: var(--text-main);
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .sticky-header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .header {
-            background-color: var(--primary);
-            color: white;
-            padding: 15px;
-            text-align: center;
-        }
-
-        .header h1 { margin: 0; font-size: 1.35rem; }
-        .header p { margin: 4px 0 0 0; font-size: 0.8rem; opacity: 0.85; }
-
-        .tab-bar {
-            display: flex;
-            background-color: #ffffff;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .tab-btn {
-            flex: 1;
-            padding: 12px 0;
-            text-align: center;
-            background: none;
-            border: none;
-            font-size: 0.95rem;
-            font-weight: bold;
-            color: var(--text-sub);
-            cursor: pointer;
-            border-bottom: 3px solid transparent;
-        }
-
-        .tab-btn.active {
-            color: var(--primary);
-            border-bottom: 3px solid var(--primary);
-        }
-
-        .container {
-            padding: 15px;
-            max-width: 600px;
-            margin: 0 auto;
-            box-sizing: border-box;
-        }
-
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            border: 1px solid #e0e0e0;
-        }
-
-        .day-tag {
-            background-color: var(--tag-blue);
-            color: var(--tag-blue-text);
-            padding: 5px 12px;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            display: inline-block;
-            margin-bottom: 12px;
-        }
-
-        .day-title, .list-title {
-            margin: 0 0 16px 0;
-            font-size: 1.25rem;
-            color: var(--primary-dark);
-            font-weight: 700;
-        }
-
-        .section { margin-bottom: 16px; }
-        .section-title { font-size: 0.95rem; font-weight: 700; margin: 0 0 6px 0; display: flex; align-items: center; gap: 6px; }
-        .section-content { font-size: 0.92rem; color: var(--text-sub); margin: 0; line-height: 1.6; }
-        
-        .badge { padding: 3px 8px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; display: inline-block; }
-        .badge-weather { background-color: #e8f0fe; color: #1a73e8; }
-        .badge-food { background-color: var(--tag-green); color: var(--tag-green-text); }
-        .badge-tip { background-color: var(--tag-orange); color: var(--tag-orange-text); }
-
-        .food-box {
-            background-color: #f8f9fa;
-            border-left: 4px solid #34a853;
-            padding: 10px 12px;
-            border-radius: 0 8px 8px 0;
-            margin-top: 6px;
-        }
-        .food-box-title { font-size: 0.88rem; font-weight: 700; color: var(--tag-green-text); margin-bottom: 4px; }
-        .divider { height: 1px; background-color: #eeeeee; margin: 14px 0; }
-
-        /* 檢查清單 */
-        .checklist-item { display: flex; align-items: center; padding: 12px 4px; border-bottom: 1px solid #f1f3f4; cursor: pointer; }
-        .checklist-item input[type="checkbox"] { width: 20px; height: 20px; margin-right: 12px; accent-color: var(--primary); }
-        .checklist-item.checked { color: #aeaeae; text-decoration: line-through; }
-
-        /* 工具箱專屬樣式 */
-        .tool-input {
-            width: 100%;
-            padding: 12px;
-            font-size: 1rem;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-            margin-bottom: 12px;
-        }
-        .tip-btn-group { display: flex; gap: 8px; margin-bottom: 15px; }
-        .tip-pct-btn {
-            flex: 1;
-            padding: 10px 0;
-            border: 1px solid var(--primary);
-            background: white;
-            color: var(--primary);
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-        .tip-pct-btn.active { background: var(--primary); color: white; }
-        .calc-result {
-            background: #f8f9fa;
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            line-height: 1.8;
-        }
-        .copy-btn {
-            background: #f1f3f4;
-            border: 1px solid #dadce0;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            margin-left: 8px;
-            display: inline-block;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="sticky-header">
-        <div class="header">
-            <h1>🌐 GoWest! 美西三城隨身助手</h1>
-            <p>📅 2026/07/18 - 07/27 | 星宇航空系列</p>
-        </div>
-        <div class="tab-bar">
-            <button class="tab-btn active" onclick="switchTab('itinerary')">📅 行程表</button>
-            <button class="tab-btn" onclick="switchTab('checklist')">✅ 清單</button>
-            <button class="tab-btn" onclick="switchTab('tools')">💡 工具指南</button>
-        </div>
-    </div>
-
-    <div class="container">
-        
-        <!-- ================= 頁籤一：每日行程 ================= -->
-        <div id="itinerary" class="tab-content active">
-            <!-- Day 1 -->
-            <div class="card">
-                <span class="day-tag">Day 1 · 7/18 (六)</span>
-                <h3 class="day-title">台灣桃園 ➔ 舊金山霧都啟航</h3>
-                <div class="section"><p class="section-title">📍 行程焦點</p><p class="section-content">桃園機場集合，搭乘星宇航空 JX012（00:05起飛）飛越國際換日線，於美西時間 7/18 晚上 21:00 抵達舊金山，隨後入住飯店休息。</p></div>
-                <div class="divider"></div>
-                <div class="section"><p class="section-title"><span class="badge badge-weather">🌤️ 氣溫與穿著 (12°C - 22°C)</span></p><p class="section-content">機上與舊金山夜間體感偏冷。建議穿著舒適長庫、大學T，並隨身攜帶保慢連帽外套下機時禦寒。</p></div>
-                <div class="divider"></div>
-                <div class="section"><p class="section-title"><span class="badge badge-food">🍔 餐食配置</span></p><p class="section-content">早：X / 中：X / 晚：機上精緻套餐</p></div>
-            </div>
-            <!-- Day 2 -->
-            <div class="card">
-                <span class="day-tag">Day 2 · 7/19 (日)</span>
-                <h3 class="day-title">舊金山經典漫遊（惡魔島＋打卡聖地）</h3>
-                <div class="section"><p class="section-title">📍 行程焦點</p><p class="section-content">藝術宮 ➔ 金門大橋 ➔ 漁人碼頭 ➔ 惡魔島遊船登島（探秘《絕地任務》場景） ➔ 九曲花街 ➔ 市政廳打卡。</p></div>
-                <div class="divider"></div>
-                <div class="section"><p class="section-title"><span class="badge badge-weather">🌤️ 氣溫與穿著 (12°C - 22°C)</span></p><p class="section-content">舊金山海風極強。請務必穿著短袖/薄長袖，外搭<strong>防風防潑水夾克</strong>與長褲，以免海邊吹風受涼。</p></div>
-                <div class="divider"></div>
-                <div class="section"><p class="section-title"><span class="badge badge-food">🍔 餐食配置</span></p><p class="section-content">早：飯店內用 / 中：漁人碼頭西式螃蟹餐 / 晚：中式料理七菜一湯</p></div>
-            </div>
-            <!-- Day 3 -->
-            <div class="card">
-                <span class="day-tag">Day 3 · 7/20 (一)</span>
-                <h3 class="day-title">舊金山 ➔ 優勝美地國家公園 ➔ 佛雷斯諾</h3>
-                <div class="section"><p class="section-title">📍 行程焦點</p><p class="section-content">朝聖世界自然遺產「優勝美地國家公園」，隨後前往中加州佛雷斯諾。</p></div>
-                <div class="divider"></div>
-                <div class="section"><p class="section-title"><span class="badge badge-weather">🌤️ 氣溫與穿著 (15°C - 32°C)</span></p><p class="section-content">山區清晨涼爽、正午曝曬。建議穿排汗短袖、運動長褲、<strong>防滑運動鞋</strong>。</p></div>
-                <div class="divider"></div>
-                <div class="section"><p class="section-title"><span class="badge badge-tip">💡 自理餐指南 (中餐自理)</span></p><div class="food-box"><div class="food-box-title">推薦：Degnan's Kitchen (Yosemite Village)</div><div class="section-content">主主打現烤窯烤披薩、熱壓三明治與咖啡，出餐快座位多。</div></div></div>
-                <div class="divider"></div>
-                <div class="section"><p class="section-title"><span class="badge badge-food">🍔 餐食配置</span></p><p class="section-content">早：飯店內用 / 中：園區自理 / 晚：Applebee's 美式風味餐</p></div>
-            </div>
-            <!-- 其他天數保留如同上一版，維持簡潔 -->
-            <div class="card">
-                <span class="day-tag">后續天數摘要</span>
-                <p class="section-content">Day 4-10 包含拉斯維加斯、大峽谷、佩姬小鎮羚羊谷、洛杉磯環球影城，完整行程已妥善安排。</p>
-            </div>
-        </div>
-
-        <!-- ================= 頁籤二：檢查清單 ================= -->
-        <div id="checklist" class="tab-content">
-            <div class="card">
-                <h3 class="list-title">💳 一、 重要證件與金流</h3>
-                <label class="checklist-item"><input type="checkbox" id="item_1_1"> 護照</label>
-                <label class="checklist-item"><input type="checkbox" id="item_1_2"> 簽證 (ESTA)</label>
-                <label class="checklist-item"><input type="checkbox" id="item_1_6"> 信用卡（包含實體卡片與 Apple Pay）</label>
-                <label class="checklist-item"><input type="checkbox" id="item_1_7"> 現金</label>
-                <label class="checklist-item"><input type="checkbox" id="item_1_8" checked> 旅平險 / 不便險證明</label>
-            </div>
-            <div class="card">
-                <h3 class="list-title">🔌 二、 電子產品與通訊</h3>
-                <label class="checklist-item"><input type="checkbox" id="item_2_1" checked> 漫遊方案/eSIM (開啟 Wi-Fi Calling)</label>
-                <label class="checklist-item"><input type="checkbox" id="item_2_2" checked> 行動電源</label>
-                <label class="checklist-item"><input type="checkbox" id="item_2_3"> 充電線</label>
-            </div>
-            <!-- 清單項目可自行依上一版繼續堆疊 -->
-        </div>
-
-        <!-- ================= 頁籤三：實用工具與指南 ================= -->
-        <div id="tools" class="tab-content">
-            
-            <!-- 項目 1：美國小費計算機 -->
-            <div class="card">
-                <h3 class="list-title">🪙 美國餐廳小費計算機</h3>
-                <input type="number" id="billAmount" class="tool-input" placeholder="請輸入帳單總金額 (USD)" oninput="calculateTip()">
-                <div class="tip-btn-group">
-                    <button class="tip-pct-btn active" onclick="setTipPct(15, this)">午餐 15%</button>
-                    <button class="tip-pct-btn" onclick="setTipPct(18, this)">一般 18%</button>
-                    <button class="tip-pct-btn" onclick="setTipPct(20, this)">晚餐/滿意 20%</button>
-                </div>
-                <div class="calc-result">
-                    💵 應付小費：<strong id="tipResult">$0.00</strong><br>
-                    💰 總共金額 (含小費)：<strong id="totalResult">$0.00</strong>
-                </div>
-            </div>
-
-            <!-- 項目 2：飯店地址複製專區 -->
-            <div class="card">
-                <h3 class="list-title">🏠 飯店資訊一鍵複製</h3>
-                <div class="section">
-                    <p class="section-title">🏢 舊金山飯店 (Day 1-2)</p>
-                    <p class="section-content">
-                        <strong>Hotel Nikko San Francisco</strong><br>
-                        222 Mason St, San Francisco, CA 94102
-                        <button class="copy-btn" onclick="copyText('222 Mason St, San Francisco, CA 94102')">複製地址</button>
-                    </p>
-                </div>
-                <div class="divider"></div>
-                <div class="section">
-                    <p class="section-title">🎲 拉斯維加斯飯店 (Day 4-6)</p>
-                    <p class="section-content">
-                        <strong>Bellagio Las Vegas</strong><br>
-                        3600 S Las Vegas Blvd, Las Vegas, NV 89109
-                        <button class="copy-btn" onclick="copyText('3600 S Las Vegas Blvd, Las Vegas, NV 89109')">複製地址</button>
-                    </p>
-                </div>
-            </div>
-
-            <!-- 項目 3：重要聯絡與生存指南 -->
-            <div class="card">
-                <h3 class="list-title">📞 緊急聯絡與時差</h3>
-                <p class="section-content">
-                    🚨 <strong>美國緊急報案專線：</strong> 911<br>
-                    🇹🇼 <strong>駐洛杉磯辦事處急難救助：</strong> +1 (213) 922-9118<br>
-                    ⏰ <strong>時差提醒：</strong> 美西比台灣<strong>慢 15 小時</strong>（台灣中午 12 點 = 美西前一天晚上 9 點）。
-                </p>
-            </div>
-
-            <!-- 項目 4：美式點餐生存 Hacks -->
-            <div class="card">
-                <h3 class="list-title">🍔 美食點餐小迷思</h3>
-                <div class="food-box" style="border-left-color: #1a73e8;">
-                    <div class="food-box-title" style="color: #1a73e8;">🥤 汽水飲料免費續杯 (Free Refills)</div>
-                    <div class="section-content">美國內陸的連鎖速食店，只要給杯子，內用的汽水機幾乎都是無限暢飲自取。</div>
-                </div>
-                <div class="food-box" style="border-left-color: #ff9800; margin-top: 10px;">
-                    <div class="food-box-title" style="color: #ff9800;">🥩 牛排熟度怎麼說？</div>
-                    <div class="section-content">三分熟：Medium Rare | 五分熟：Medium | 七分熟：Medium Well。</div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <script>
-        // 頁籤切換邏輯
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            event.currentTarget.classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // 小費計算機邏輯
-        let currentTipPct = 15;
-        function setTipPct(pct, btn) {
-            currentTipPct = pct;
-            document.querySelectorAll('.tip-pct-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            calculateTip();
-        }
-        function calculateTip() {
-            const bill = parseFloat(document.getElementById('billAmount').value) || 0;
-            const tip = bill * (currentTipPct / 100);
-            const total = bill + tip;
-            document.getElementById('tipResult').innerText = `$${tip.toFixed(2)}`;
-            document.getElementById('totalResult').innerText = `$${total.toFixed(2)}`;
-        }
-
-        // 一鍵複製地址邏輯
-        function copyText(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                alert('地址已成功複製！可直接貼至 Uber 或地圖。');
-            });
-        }
-
-        // 檢查清單持久化儲存
-        document.addEventListener('DOMContentLoaded', () => {
-            const checkboxes = document.querySelectorAll('.checklist-item input[type="checkbox"]');
-            checkboxes.forEach(cb => {
-                const id = cb.id;
-                const saved = localStorage.getItem(id);
-                if (saved !== null) cb.checked = (saved === 'true');
-                updateItemStyle(cb);
-                cb.addEventListener('change', (e) => {
-                    localStorage.setItem(id, e.target.checked);
-                    updateItemStyle(e.target);
-                });
-            });
-        });
-        function updateItemStyle(cb) {
-            if (cb.checked) cb.parentElement.classList.add('checked');
-            else cb.parentElement.classList.remove('checked');
-        }
-    </script>
-</body>
-</html>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%; font-family: Arial, sans-serif;">
+  <thead>
+    <tr style="background-color: #f2f2f2; text-align: left;">
+      <th style="width: 8%;">天數</th>
+      <th style="width: 10%;">日期</th>
+      <th style="width: 25%;">每日行程摘要</th>
+      <th style="width: 57%;">住宿飯店資訊</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>D1</b></td>
+      <td>7/18 (六)</td>
+      <td>桃園 / 舊金山</td>
+      <td>Doubletree By Hilton 或 Marriott 或 Hilton 或 AC Hotel By Marriott 或 Crowne Plaza 或同級旅館</td>
+    </tr>
+    <tr>
+      <td><b>D2</b></td>
+      <td>7/19 (日)</td>
+      <td>舊金山漫遊（藝術宮、金門大橋、漁人碼頭、惡魔島遊船、九曲花街、市政廳）</td>
+      <td>Doubletree By Hilton 或 Marriott 或 Hilton 或 AC Hotel By Marriott 或 Crowne Plaza 或同級旅館</td>
+    </tr>
+    <tr>
+      <td><b>D3</b></td>
+      <td>7/20 (一)</td>
+      <td>舊金山 ➔ 優勝美地國家公園 ➔ 佛雷斯諾</td>
+      <td>Fairfield Inn 或 Holiday Inn Express 或 Hampton Inn 或 Best Western Plus 或同級旅館</td>
+    </tr>
+    <tr>
+      <td><b>D4</b></td>
+      <td>7/21 (二)</td>
+      <td>佛雷斯諾 ➔ 巴斯托名牌大賣場 ➔ 彩虹巨石 ➔ 拉斯維加斯</td>
+      <td>四星 Treasure Island 或 四星 Planet Hollywood 或 四星 Sahara 或 四星 Luxor 或同級旅館</td>
+    </tr>
+    <tr>
+      <td><b>D5</b></td>
+      <td>7/22 (三)</td>
+      <td>拉斯維加斯 ➔ 大峽谷國家公園（南緣+東緣）➔ 佩姬小鎮</td>
+      <td>La Quinta Inn 或 Holiday Inn Express 或 Best Western 或 Hampton Inn 或 Wingate By Wyndham 或 Comfort Inn 或 Country Inn 或 Baymont Inn 或同級旅館</td>
+    </tr>
+    <tr>
+      <td><b>D6</b></td>
+      <td>7/23 (四)</td>
+      <td>佩姬小鎮（羚羊峽谷、馬蹄灣、格蘭峽谷水壩、包威爾湖）➔ 拉斯維加斯</td>
+      <td>四星 Treasure Island 或 四星 Planet Hollywood 或 四星 Sahara 或 四星 Luxor 或同級旅館</td>
+    </tr>
+    <tr>
+      <td><b>D7</b></td>
+      <td>7/24 (五)</td>
+      <td>拉斯維加斯名牌大賣場 ➔ 洛杉磯</td>
+      <td>四星 Sheraton San Gabriel 或 四星 Hilton Glendale 或 四星 The Biltmore Los Angeles 或同級旅館</td>
+    </tr>
+    <tr>
+      <td><b>D8</b></td>
+      <td>7/25 (六)</td>
+      <td>洛杉磯（好萊塢環球影城、星光大道、中國戲院、杜比劇院）➔ 機場</td>
+      <td>機上</td>
+    </tr>
+    <tr>
+      <td><b>D9</b></td>
+      <td>7/26 (日)</td>
+      <td>洛杉磯 / 桃園（飛越國際換日線）</td>
+      <td>機上</td>
+    </tr>
+    <tr>
+      <td><b>D10</b></td>
+      <td>7/27 (一)</td>
+      <td>抵達桃園國際機場</td>
+      <td>溫溫的家</td>
+    </tr>
+  </tbody>
+</table>
