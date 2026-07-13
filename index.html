@@ -58,6 +58,48 @@
             opacity: 0.85;
         }
 
+        /* 行程切換列 */
+        .trip-bar {
+            display: flex;
+            gap: 8px;
+            background-color: #0d47a1;
+            padding: 10px 12px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .trip-bar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .trip-btn {
+            flex: 0 0 auto;
+            background-color: rgba(255,255,255,0.15);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .trip-btn.active {
+            background-color: white;
+            color: var(--primary-dark);
+            border-color: white;
+        }
+
+        .trip-content {
+            display: none;
+        }
+
+        .trip-content.active {
+            display: block;
+        }
+
         /* 頁籤切換列 */
         .tab-bar {
             display: flex;
@@ -491,10 +533,14 @@
 
     <div class="sticky-header">
         <div class="header">
-            <h1>🌐 GoWest! 美西三城隨身助手</h1>
-            <p>📅 2026/07/18 - 07/27 | 星宇航空系列</p>
+            <h1>🌐 我的旅程助手</h1>
+            <p id="tripSubtitle">📅 2026/07/18 - 07/27 | 星宇航空系列</p>
         </div>
-        <div class="tab-bar">
+        <div class="trip-bar">
+            <button class="trip-btn active" onclick="switchTrip('usc')">🇺🇸 美西10日</button>
+            <button class="trip-btn" onclick="switchTrip('add')">➕ 新增行程</button>
+        </div>
+        <div class="tab-bar" id="tabBarUsc">
             <button class="tab-btn active" onclick="switchTab('itinerary')">📅 每日行程</button>
             <button class="tab-btn" onclick="switchTab('checklist')">✅ 檢查清單</button>
             <button class="tab-btn" onclick="switchTab('tools')">🧰 實用工具</button>
@@ -504,6 +550,9 @@
     </div>
 
     <div class="container">
+
+        <!-- ================= 行程一：美西10日 ================= -->
+        <div id="trip-usc" class="trip-content active">
 
         <!-- ================= 頁籤一：每日行程 ================= -->
         <div id="itinerary" class="tab-content active">
@@ -1197,10 +1246,45 @@
 
         </div>
 
+        </div>
+        <!-- ================= /行程一：美西10日 ================= -->
+
+        <!-- ================= 行程二：新增行程（預留位置） ================= -->
+        <div id="trip-add" class="trip-content">
+            <div class="card" style="text-align:center;">
+                <p class="section-content" style="font-size:1rem;">📎 把新行程的行程確認單／飯店資訊／地圖連結給我，<br>我就會照這個架構幫你排一份新的頁籤內容進來。</p>
+            </div>
+        </div>
+
     </div>
 
     <!-- 前端控制腳本 -->
     <script>
+        // 0. 行程切換
+        const tripMeta = {
+            usc: { label: '🇺🇸 美西10日', subtitle: '📅 2026/07/18 - 07/27 | 星宇航空系列' },
+            add: { label: '➕ 尚未建立', subtitle: '把新行程資料給我，就能排進這裡' }
+        };
+
+        function switchTrip(tripId) {
+            document.querySelectorAll('.trip-content').forEach(el => el.classList.remove('active'));
+            document.getElementById('trip-' + tripId).classList.add('active');
+
+            document.querySelectorAll('.trip-btn').forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            // 只有美西行程有自己的頁籤列，其他行程先隱藏頁籤列
+            document.getElementById('tabBarUsc').style.display = (tripId === 'usc') ? 'flex' : 'none';
+
+            const meta = tripMeta[tripId];
+            if (meta) {
+                document.querySelector('.header h1').textContent = '🌐 我的旅程助手';
+                document.getElementById('tripSubtitle').textContent = meta.subtitle;
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         // 1. 處理頁籤切換
         function switchTab(tabId) {
             // 切換 active 內容
