@@ -944,10 +944,15 @@
                 <p class="hint" style="margin-top:-8px;">團號 USC071810JX6P・集合時間 2026/07/18 21:05・集合地點：桃園機場第二航站星宇航空8號團體櫃台</p>
 
                 <div class="emergency-item">
-                    <div class="emergency-title">👤 領隊導遊：陳柏菁 先生</div>
-                    <div class="emergency-phone">國內電話：0913-571-777</div>
-                    <div class="emergency-desc">海外撥打（在美國當地請直接撥）：+1-516-800-4571<br>
-                    從台灣撥打海外：002-1-516-800-4571</div>
+                    <div class="emergency-title">👤 領隊導遊 <span style="font-weight:400; color:var(--text-sub); font-size:0.75rem;">（選填，可自行修改）</span></div>
+                    <div class="personal-fill">
+                        <label class="tool-label" style="margin-bottom:0;">姓名</label>
+                        <input type="text" id="guideName" placeholder="例：陳柏菁 先生" oninput="saveEmergencyField('guideName')">
+                        <label class="tool-label" style="margin-bottom:0; margin-top:8px;">國內電話</label>
+                        <input type="text" id="guidePhoneTW" placeholder="例：0913-571-777" oninput="saveEmergencyField('guidePhoneTW')">
+                        <label class="tool-label" style="margin-bottom:0; margin-top:8px;">海外電話（美國當地直撥）</label>
+                        <input type="text" id="guidePhoneUS" placeholder="例：+1-516-800-4571" oninput="saveEmergencyField('guidePhoneUS')">
+                    </div>
                 </div>
 
                 <div class="emergency-item">
@@ -956,9 +961,13 @@
                 </div>
 
                 <div class="emergency-item">
-                    <div class="emergency-title">🧭 海外緊急連絡人：Mr. Richard Sung</div>
-                    <div class="emergency-phone">002-1-626-510-3568</div>
-                    <div class="emergency-desc">在美國當地可直接撥打：+1-626-510-3568</div>
+                    <div class="emergency-title">🧭 海外緊急連絡人 <span style="font-weight:400; color:var(--text-sub); font-size:0.75rem;">（選填，可自行修改）</span></div>
+                    <div class="personal-fill">
+                        <label class="tool-label" style="margin-bottom:0;">姓名</label>
+                        <input type="text" id="emgContactName" placeholder="例：Mr. Richard Sung" oninput="saveEmergencyField('emgContactName')">
+                        <label class="tool-label" style="margin-bottom:0; margin-top:8px;">電話（美國當地直撥）</label>
+                        <input type="text" id="emgContactPhone" placeholder="例：+1-626-510-3568" oninput="saveEmergencyField('emgContactPhone')">
+                    </div>
                 </div>
 
                 <div class="emergency-item">
@@ -1233,7 +1242,7 @@
             });
 
             // 讀取已儲存的緊急聯絡填寫欄位
-            ['insurancePhone', 'cardPhone'].forEach(id => {
+            ['guideName', 'guidePhoneTW', 'guidePhoneUS', 'emgContactName', 'emgContactPhone', 'insurancePhone', 'cardPhone'].forEach(id => {
                 const el = document.getElementById(id);
                 const saved = localStorage.getItem('emg_' + id);
                 if (saved !== null) el.value = saved;
