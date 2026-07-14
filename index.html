@@ -538,6 +538,7 @@
         </div>
         <div class="trip-bar">
             <button class="trip-btn active" onclick="switchTrip('usc')">🇺🇸 美西10日</button>
+            <button class="trip-btn" onclick="switchTrip('tokyo')">🇯🇵 東京5日</button>
             <button class="trip-btn" onclick="switchTrip('add')">➕ 新增行程</button>
         </div>
         <div class="tab-bar" id="tabBarUsc">
@@ -546,6 +547,13 @@
             <button class="tab-btn" onclick="switchTab('tools')">🧰 實用工具</button>
             <button class="tab-btn" onclick="switchTab('english')">🗣️ 實用英文</button>
             <button class="tab-btn" onclick="switchTab('luggage')">🧳 行李須知</button>
+        </div>
+        <div class="tab-bar" id="tabBarTokyo" style="display:none;">
+            <button class="tab-btn active" onclick="switchTab('tokyo_itinerary')">📅 每日行程</button>
+            <button class="tab-btn" onclick="switchTab('tokyo_checklist')">✅ 檢查清單</button>
+            <button class="tab-btn" onclick="switchTab('tokyo_tools')">🧰 實用工具</button>
+            <button class="tab-btn" onclick="switchTab('tokyo_japanese')">🗣️ 實用日文</button>
+            <button class="tab-btn" onclick="switchTab('tokyo_luggage')">🧳 行李須知</button>
         </div>
     </div>
 
@@ -1253,6 +1261,366 @@
         </div>
         <!-- ================= /行程一：美西10日 ================= -->
 
+        <!-- ================= 行程二：東京5日 ================= -->
+        <div id="trip-tokyo" class="trip-content">
+
+            <!-- ---- 頁籤：每日行程 ---- -->
+            <div id="tokyo_itinerary" class="tab-content active">
+
+                <div class="card">
+                    <span class="day-tag">Day 1 · 1/25 (一)</span>
+                    <h3 class="day-title">台灣桃園 ➔ 東京成田</h3>
+                    <div class="section">
+                        <p class="section-title">📍 行程焦點</p>
+                        <p class="section-content">搭乘長榮航空 BR184，07:55 桃園起飛，12:00 抵達成田國際機場。入境後可搭乘成田特快 N'EX 或利木津巴士前往東京市區（車程約60-90分鐘），飯店辦理入住後，午後可自由活動，晚餐建議在飯店周邊尋找拉麵或居酒屋，早點休息調整時差。</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="section">
+                        <p class="section-title"><span class="badge badge-weather">🌤️ 氣溫與穿著（約5°C-12°C）</span></p>
+                        <p class="section-content">1月東京偏乾冷，早晚溫差大。建議洋蔥式穿搭：發熱衣＋毛衣＋防風防潑水外套，圍巾、手套、耳罩備用，室內大多有暖氣可隨時增減衣物。</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="section">
+                        <p class="section-title"><span class="badge badge-food">🍔 餐食配置</span></p>
+                        <p class="section-content">早：X／中：機上餐點／晚：自理（飯店周邊）</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <span class="day-tag">Day 2 · 1/26 (二)</span>
+                    <h3 class="day-title">淺草文化巡禮 ➔ 晴空塔 ➔ 上野公園</h3>
+                    <div class="section">
+                        <p class="section-title">📍 行程焦點</p>
+                        <p class="section-content">淺草寺、雷門、仲見世通老街購物 ➔ 東京晴空塔登高俯瞰東京市景 ➔ 上野公園散步（冬季可能巧遇早開的梅花）➔ 阿美橫町逛街小吃。</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="section">
+                        <p class="section-title"><span class="badge badge-weather">🌤️ 氣溫與穿著</span></p>
+                        <p class="section-content">戶外行程較多，建議保暖外套＋好走的鞋，仲見世通與阿美橫町人潮多，隨身包包注意保管。</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="section">
+                        <p class="section-title"><span class="badge badge-food">🍔 餐食配置</span></p>
+                        <p class="section-content">早：飯店內用／中：自理（仲見世通小吃）／晚：自理（上野／阿美橫町）</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <span class="day-tag">Day 3 · 1/27 (三)</span>
+                    <h3 class="day-title">明治神宮 ➔ 原宿・表參道 ➔ 澀谷 ➔ 銀座</h3>
+                    <div class="section">
+                        <p class="section-title">📍 行程焦點</p>
+                        <p class="section-content">明治神宮參拜、感受都市中的靜謐森林 ➔ 表參道與原宿竹下通感受年輕潮流文化 ➔ 澀谷十字路口朝聖、可加購 SHIBUYA SKY 觀景台門票 ➔ 銀座百貨與名店街購物晚餐。</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="section">
+                        <p class="section-title"><span class="badge badge-food">🍔 餐食配置</span></p>
+                        <p class="section-content">早：飯店內用／中：自理（表參道／原宿）／晚：自理（銀座）</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <span class="day-tag">Day 4 · 1/28 (四)</span>
+                    <h3 class="day-title">東京迪士尼樂園／海洋 全日暢遊</h3>
+                    <div class="section">
+                        <p class="section-title">📍 行程焦點</p>
+                        <p class="section-content">兩座樂園擇一（樂園 Land 適合經典童話與遊樂設施；海洋 Sea 主題更成人化、園景優美），全天暢玩，1月為相對淡季但熱門設施仍建議一早入園並透過官方 App 預約遊玩時段與查詢即時排隊時間。</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="section">
+                        <p class="section-title"><span class="badge badge-tip">💡 小提醒</span></p>
+                        <p class="section-content">建議提前於官網或 App 購買日期指定門票，避免現場售完；冬季夜間氣溫低，建議攜帶保暖外套與暖暖包，部分區域夜間可能有燈光秀或煙火（依當期公告為準）。</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="section">
+                        <p class="section-title"><span class="badge badge-food">🍔 餐食配置</span></p>
+                        <p class="section-content">早：飯店內用／中：園區自理／晚：園區自理</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <span class="day-tag">Day 5 · 1/29 (五)</span>
+                    <h3 class="day-title">自由採買 ➔ 東京成田 ➔ 台灣桃園</h3>
+                    <div class="section">
+                        <p class="section-title">📍 行程焦點</p>
+                        <p class="section-content">上午可自由活動，前往新宿、池袋或東京車站丸之內採買伴手禮；下午整理行李後前往成田機場，搭乘 BR195，20:20 東京起飛，23:25 抵達台北桃園機場。</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="section">
+                        <p class="section-title"><span class="badge badge-tip">💡 交通提醒</span></p>
+                        <p class="section-content">市區前往成田機場車程約60-90分鐘，加上國際線建議提前3小時報到，請預留充裕時間，建議下午16:00前出發前往機場。</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="section">
+                        <p class="section-title"><span class="badge badge-food">🍔 餐食配置</span></p>
+                        <p class="section-content">早：飯店內用／中：自理／晚：機上餐點</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ---- 頁籤：檢查清單 ---- -->
+            <div id="tokyo_checklist" class="tab-content">
+                <div class="card">
+                    <h3 class="list-title">💳 一、重要證件與金流</h3>
+                    <label class="checklist-item"><input type="checkbox" id="tokyo_item_1_1"> 護照（效期6個月以上）</label>
+                    <label class="checklist-item"><input type="checkbox" id="tokyo_item_1_2"> 機票／護照電子申請 Visit Japan Web 完成登錄</label>
+                    <label class="checklist-item"><input type="checkbox" id="tokyo_item_1_3"> 信用卡／日幣現金</label>
+                    <label class="checklist-item"><input type="checkbox" id="tokyo_item_1_4"> 旅平險證明</label>
+                    <label class="checklist-item"><input type="checkbox" id="tokyo_item_1_5"> 零錢包（日本自動販賣機／神社參拜常用銅板）</label>
+                </div>
+                <div class="card">
+                    <h3 class="list-title">🔌 二、電子產品與通訊</h3>
+                    <label class="checklist-item"><input type="checkbox" id="tokyo_item_2_1"> 日本上網 eSIM／Wi-Fi 分享器</label>
+                    <label class="checklist-item"><input type="checkbox" id="tokyo_item_2_2"> 行動電源</label>
+                    <label class="checklist-item"><input type="checkbox" id="tokyo_item_2_3"> 充電線／轉接頭（日本電壓100V，插座與台灣同為雙平腳，通常不需轉接）</label>
+                </div>
+                <div class="card">
+                    <h3 class="list-title">🧥 三、冬季衣物與禦寒</h3>
+                    <label class="checklist-item"><input type="checkbox" id="tokyo_item_3_1"> 發熱衣</label>
+                    <label class="checklist-item"><input type="checkbox" id="tokyo_item_3_2"> 保暖外套／防風防潑水外套</label>
+                    <label class="checklist-item"><input type="checkbox" id="tokyo_item_3_3"> 圍巾、手套、毛帽</label>
+                    <label class="checklist-item"><input type="checkbox" id="tokyo_item_3_4"> 暖暖包</label>
+                    <label class="checklist-item"><input type="checkbox" id="tokyo_item_3_5"> 好走的鞋（迪士尼／市區徒步量大）</label>
+                </div>
+                <div class="card">
+                    <h3 class="list-title">🧴 四、個人衛生與保養</h3>
+                    <label class="checklist-item"><input type="checkbox" id="tokyo_item_4_1"> 護唇膏／乳液（冬季日本室內外乾燥）</label>
+                    <label class="checklist-item"><input type="checkbox" id="tokyo_item_4_2"> 牙刷牙膏（部分飯店不提供）</label>
+                    <label class="checklist-item"><input type="checkbox" id="tokyo_item_4_3"> 口罩</label>
+                    <label class="checklist-item"><input type="checkbox" id="tokyo_item_4_4"> 常備藥品</label>
+                </div>
+            </div>
+
+            <!-- ---- 頁籤：實用工具 ---- -->
+            <div id="tokyo_tools" class="tab-content">
+
+                <!-- 時間轉換器放最前面 -->
+                <div class="card">
+                    <h3 class="list-title">🕐 台灣 ↔ 東京時間轉換器</h3>
+                    <p class="hint" style="margin-top:-8px;">日本全年不實施夏令時間，東京時間全年固定比台灣快1小時。</p>
+                    <div class="time-now-row">
+                        <div class="time-now-box">
+                            <div class="city">🇹🇼 台灣現在時間</div>
+                            <div class="clock" id="clockTaiwanTokyo">--:--:--</div>
+                            <div class="date" id="dateTaiwanTokyo">--</div>
+                        </div>
+                        <div class="time-now-box">
+                            <div class="city">🇯🇵 東京現在時間</div>
+                            <div class="clock" id="clockTokyo">--:--:--</div>
+                            <div class="date" id="dateTokyo">--</div>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <p class="tool-label">手動換算（輸入其中一欄，按下換算）</p>
+                    <div class="tool-row">
+                        <div class="tool-field">
+                            <label class="tool-label">台灣時間</label>
+                            <input type="datetime-local" id="twInputTokyo">
+                        </div>
+                        <div class="tool-field">
+                            <label class="tool-label">東京時間</label>
+                            <input type="datetime-local" id="tokyoInput">
+                        </div>
+                    </div>
+                    <button class="swap-btn" onclick="convertTwToTokyo()">台灣 ➔ 東京 換算</button>
+                    <button class="swap-btn" style="background-color:#137333; margin-top:8px;" onclick="convertTokyoToTw()">東京 ➔ 台灣 換算</button>
+                </div>
+
+                <!-- 消費稅退稅試算（取代小費試算，因日本無小費文化） -->
+                <div class="card">
+                    <h3 class="list-title">🧾 消費稅退稅試算</h3>
+                    <p class="hint" style="margin-top:-8px; margin-bottom:14px;">日本消費稅為10%。同一天在同一間店消費滿 ¥5,000（未稅）以上，持護照現場即可辦理免稅，輸入含稅金額即可概算未稅價與退稅金額。</p>
+                    <div class="tool-row">
+                        <div class="tool-field">
+                            <label class="tool-label">商品含稅金額（日圓）</label>
+                            <input type="number" id="japanTaxAmount" value="10000" min="0" step="1" oninput="calcJapanTax()">
+                        </div>
+                        <div class="tool-field">
+                            <label class="tool-label">日圓 ➔ 台幣匯率</label>
+                            <input type="number" id="japanTaxRate" value="0.21" min="0" step="0.001" oninput="calcJapanTax()">
+                        </div>
+                    </div>
+                    <div class="result-box" id="japanTaxResult"></div>
+                    <p class="hint">匯率僅供概估，實際請以出發前台灣銀行牌告匯率為準。免稅需持護照於店家免稅櫃檯辦理，部分店家有低消門檻或需維持包裝完整、6個月內攜出日本等規定。</p>
+                </div>
+
+                <!-- 住宿資訊（尚未預訂，先留可編輯欄位） -->
+                <div class="card">
+                    <h3 class="list-title">🏨 住宿資訊</h3>
+                    <p class="hint" style="margin-top:-8px;">尚未指定飯店，建議住宿於新宿或淺草周邊，交通便利、往返成田機場與各景點皆方便。訂房後可填入以下資訊。</p>
+                    <div class="personal-fill">
+                        <label class="tool-label" style="margin-bottom:0;">飯店名稱</label>
+                        <input type="text" id="tokyo_hotelName" placeholder="例：新宿○○飯店" oninput="saveEmergencyField('tokyo_hotelName')">
+                        <label class="tool-label" style="margin-bottom:0; margin-top:8px;">地址</label>
+                        <input type="text" id="tokyo_hotelAddress" placeholder="訂房後填入" oninput="saveEmergencyField('tokyo_hotelAddress')">
+                        <label class="tool-label" style="margin-bottom:0; margin-top:8px;">電話</label>
+                        <input type="text" id="tokyo_hotelPhone" placeholder="例：+81-3-xxxx-xxxx" oninput="saveEmergencyField('tokyo_hotelPhone')">
+                    </div>
+                </div>
+
+                <!-- 緊急聯絡方式 -->
+                <div class="card">
+                    <h3 class="list-title">🆘 緊急聯絡方式</h3>
+                    <p class="hint" style="margin-top:-8px;">航班：BR184（1/25 桃園→成田）／BR195（1/29 成田→桃園）</p>
+
+                    <div class="emergency-item">
+                        <div class="emergency-title">🚓 日本當地警察</div>
+                        <div class="emergency-phone">110</div>
+                    </div>
+                    <div class="emergency-item">
+                        <div class="emergency-title">🚑 日本當地救護／消防</div>
+                        <div class="emergency-phone">119</div>
+                    </div>
+                    <div class="emergency-item">
+                        <div class="emergency-title">🗾 JNTO 日本觀光局旅遊諮詢熱線（24小時多語）</div>
+                        <div class="emergency-phone">050-3816-2787</div>
+                        <div class="emergency-desc">提供中文／英文等多語服務，可協助交通、醫療、災害等旅遊諮詢。</div>
+                    </div>
+                    <div class="emergency-item">
+                        <div class="emergency-title"><span class="badge badge-emergency">外交部</span> 緊急聯絡中心（24小時）</div>
+                        <div class="emergency-phone">011-800-0885-0885</div>
+                        <div class="emergency-desc">「旅外國人急難救助全球免付費專線」，在日本境內：先撥 011，再撥 800-0885-0885。海外付費可撥 +886-800-085-095。</div>
+                    </div>
+                    <div class="emergency-item">
+                        <div class="emergency-title">👤 緊急聯絡人 <span style="font-weight:400; color:var(--text-sub); font-size:0.75rem;">（選填，可自行修改）</span></div>
+                        <div class="personal-fill">
+                            <label class="tool-label" style="margin-bottom:0;">姓名</label>
+                            <input type="text" id="tokyo_contactName" placeholder="例：家人或朋友姓名" oninput="saveEmergencyField('tokyo_contactName')">
+                            <label class="tool-label" style="margin-bottom:0; margin-top:8px;">電話</label>
+                            <input type="text" id="tokyo_contactPhone" placeholder="例：0912-345-678" oninput="saveEmergencyField('tokyo_contactPhone')">
+                        </div>
+                    </div>
+                    <div class="emergency-item">
+                        <div class="emergency-title">🏥 旅平險 24 小時服務專線</div>
+                        <div class="personal-fill">
+                            <label class="tool-label" style="margin-bottom:0;">保單號碼 / 電話</label>
+                            <input type="text" id="tokyo_insurancePhone" placeholder="保單號碼 / 電話" oninput="saveEmergencyField('tokyo_insurancePhone')">
+                        </div>
+                    </div>
+                    <div class="emergency-item">
+                        <div class="emergency-title">💳 信用卡掛失專線</div>
+                        <div class="personal-fill">
+                            <label class="tool-label" style="margin-bottom:0;">銀行名稱 / 掛失電話</label>
+                            <input type="text" id="tokyo_cardPhone" placeholder="銀行名稱 / 掛失電話" oninput="saveEmergencyField('tokyo_cardPhone')">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ---- 頁籤：實用日文 ---- -->
+            <div id="tokyo_japanese" class="tab-content">
+                <div class="card">
+                    <h3 class="list-title">🛂 海關／入境常用日文</h3>
+                    <div class="phrase-item">
+                        <div class="phrase-en">観光です（Kankou desu）</div>
+                        <div class="phrase-zh">觀光。（用於回答入境目的）</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-en">4泊です（Yonhaku desu）</div>
+                        <div class="phrase-zh">住4晚。（依實際晚數替換數字）</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-en">申告するものはありません（Shinkoku suru mono wa arimasen）</div>
+                        <div class="phrase-zh">沒有東西需要申報。</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="list-title">🛍️ 購物日文</h3>
+                    <div class="phrase-item">
+                        <div class="phrase-en">これはいくらですか？（Kore wa ikura desu ka?）</div>
+                        <div class="phrase-zh">這個多少錢？</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-en">試着してもいいですか？（Shichaku shite mo ii desu ka?）</div>
+                        <div class="phrase-zh">可以試穿嗎？</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-en">クレジットカードは使えますか？（Kurejitto kaado wa tsukaemasu ka?）</div>
+                        <div class="phrase-zh">可以刷卡嗎？</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-en">免税できますか？（Menzei dekimasu ka?）</div>
+                        <div class="phrase-zh">可以免稅嗎？</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-en">これをください（Kore wo kudasai）</div>
+                        <div class="phrase-zh">我要這個，謝謝。</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="list-title">🍽️ 飲食日文</h3>
+                    <div class="phrase-item">
+                        <div class="phrase-en">二人です（Futari desu）</div>
+                        <div class="phrase-zh">兩位。</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-en">メニューを見せてください（Menyuu wo misete kudasai）</div>
+                        <div class="phrase-zh">請給我看菜單。</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-en">おすすめは何ですか？（Osusume wa nan desu ka?）</div>
+                        <div class="phrase-zh">有推薦的嗎？</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-en">お会計お願いします（Okaikei onegaishimasu）</div>
+                        <div class="phrase-zh">買單，謝謝。</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-en">すみません、トイレはどこですか？（Sumimasen, toire wa doko desu ka?）</div>
+                        <div class="phrase-zh">請問洗手間在哪裡？</div>
+                    </div>
+                    <div class="phrase-item">
+                        <div class="phrase-en">おいしかったです（Oishikatta desu）</div>
+                        <div class="phrase-zh">很好吃。</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="list-title">💡 實用小提醒</h3>
+                    <p class="section-content">日本沒有給小費的習慣，不論餐廳、計程車或飯店都不需要額外給小費，多給反而可能讓對方感到困惑，甚至追出來歸還，安心把錢包收好即可。<br><br>
+                    不確定怎麼說時，直接說「すみません」（Sumimasen，不好意思／打擾了）就能有禮貌地引起對方注意，再用手指或翻譯 App 輔助溝通也完全沒問題！</p>
+                </div>
+            </div>
+
+            <!-- ---- 頁籤：行李須知 ---- -->
+            <div id="tokyo_luggage" class="tab-content">
+                <div class="card">
+                    <h3 class="list-title">🎒 手提行李（隨身攜帶）</h3>
+                    <div class="section">
+                        <p class="section-title">📏 尺寸與重量限制</p>
+                        <p class="section-content">長榮航空手提行李一般為 56×36×23公分、限重7公斤，實際仍以訂位艙等公告為準。</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="section">
+                        <p class="section-title"><span class="badge badge-tip">💧 液體、膠狀及噴霧類</span></p>
+                        <p class="section-content">單一容器不超過100毫升，且全部裝入一個不超過1公升、可重複密封的透明夾鏈袋內，每人限帶1個。</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="section">
+                        <p class="section-title"><span class="badge badge-emergency">🔋 鋰電池／行動電源</span></p>
+                        <p class="section-content">只能放在手提行李中，絕對不可放入託運行李，且須符合100瓦小時(Wh)以下的規格限制。</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="list-title">🧳 託運行李</h3>
+                    <div class="section">
+                        <p class="section-title"><span class="badge badge-emergency">⚠️ 去回程艙等不同，行李額度可能不同</span></p>
+                        <p class="section-content">去程 BR184 訂位艙等為經濟艙<strong>基本 Basic（W）</strong>，回程 BR195 為經濟艙<strong>經典 Standard（Q）</strong>。長榮航空短程航線經濟艙「經典」通常為2件、每件23公斤；「基本」艙等額度較低，常見為1件23公斤，但確切額度會依購票時間與票價規則而異。<br><br>
+                        <strong>強烈建議出發前先以訂位代號至長榮航空官網「行李須知」或客服確認這兩個航段各自的免費託運件數</strong>，避免機場臨時被要求加收超件費用。</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="list-title">⏰ 機場報到提醒</h3>
+                    <p class="section-content">建議於班機起飛前<strong>3小時</strong>抵達機場辦理報到。東京端請留意成田機場航廈（第1／第2航廈依訂位記錄而定），並預留足夠時間通過安檢。</p>
+                </div>
+            </div>
+
+        </div>
+        <!-- ================= /行程二：東京5日 ================= -->
+
         <!-- ================= 行程二：新增行程（預留位置） ================= -->
         <div id="trip-add" class="trip-content">
             <div class="card" style="text-align:center;">
@@ -1267,8 +1635,11 @@
         // 0. 行程切換
         const tripMeta = {
             usc: { label: '🇺🇸 美西10日', subtitle: '📅 2026/07/18 - 07/27 | 星宇航空系列' },
+            tokyo: { label: '🇯🇵 東京5日', subtitle: '📅 2027/01/25 - 01/29 | 長榮航空 BR184/BR195' },
             add: { label: '➕ 尚未建立', subtitle: '把新行程資料給我，就能排進這裡' }
         };
+
+        const tabBarIdMap = { usc: 'tabBarUsc', tokyo: 'tabBarTokyo' };
 
         function switchTrip(tripId) {
             document.querySelectorAll('.trip-content').forEach(el => el.classList.remove('active'));
@@ -1277,8 +1648,10 @@
             document.querySelectorAll('.trip-btn').forEach(btn => btn.classList.remove('active'));
             event.currentTarget.classList.add('active');
 
-            // 只有美西行程有自己的頁籤列，其他行程先隱藏頁籤列
-            document.getElementById('tabBarUsc').style.display = (tripId === 'usc') ? 'flex' : 'none';
+            // 只有真正有頁籤的行程才顯示自己的頁籤列，其餘先隱藏
+            document.querySelectorAll('.tab-bar').forEach(bar => bar.style.display = 'none');
+            const barId = tabBarIdMap[tripId];
+            if (barId) document.getElementById(barId).style.display = 'flex';
 
             const meta = tripMeta[tripId];
             if (meta) {
@@ -1330,8 +1703,11 @@
             });
 
             // 讀取已儲存的緊急聯絡填寫欄位
-            ['guideName', 'guidePhoneTW', 'guidePhoneUS', 'emgContactName', 'emgContactPhone', 'insurancePhone', 'cardPhone'].forEach(id => {
+            ['guideName', 'guidePhoneTW', 'guidePhoneUS', 'emgContactName', 'emgContactPhone', 'insurancePhone', 'cardPhone',
+             'tokyo_hotelName', 'tokyo_hotelAddress', 'tokyo_hotelPhone', 'tokyo_contactName', 'tokyo_contactPhone',
+             'tokyo_insurancePhone', 'tokyo_cardPhone'].forEach(id => {
                 const el = document.getElementById(id);
+                if (!el) return;
                 const saved = localStorage.getItem('emg_' + id);
                 if (saved !== null) el.value = saved;
             });
@@ -1339,6 +1715,10 @@
             calcTip();
             updateNowClocks();
             setInterval(updateNowClocks, 1000);
+
+            calcJapanTax();
+            updateNowClocksTokyo();
+            setInterval(updateNowClocksTokyo, 1000);
         });
 
         // 輔助函式：切換文字劃掉線樣式
@@ -1432,6 +1812,61 @@
         function toLocalInputValue(d) {
             const pad = (n) => String(n).padStart(2, '0');
             return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+        }
+
+        // 7. 東京行程：消費稅退稅試算（日本消費稅10%）
+        function calcJapanTax() {
+            const total = parseFloat(document.getElementById('japanTaxAmount').value) || 0;
+            const rate = parseFloat(document.getElementById('japanTaxRate').value) || 0;
+            const fmtJpy = (n) => n.toLocaleString('zh-TW', { maximumFractionDigits: 0 });
+            const fmtTwd = (n) => n.toLocaleString('zh-TW', { maximumFractionDigits: 0 });
+
+            const preTax = total / 1.10;
+            const taxAmount = total - preTax;
+            const eligible = preTax >= 5000;
+
+            document.getElementById('japanTaxResult').innerHTML = `
+                <div class="result-line"><span>含稅金額</span><span>¥${fmtJpy(total)}</span></div>
+                <div class="result-line"><span>未稅金額（概估）</span><span>¥${fmtJpy(preTax)}</span></div>
+                <div class="result-line total"><span>可退稅額（概估）</span><span>¥${fmtJpy(taxAmount)}</span></div>
+                <div class="result-line result-sub"><span>約合新台幣</span><span>NT$ ${fmtTwd(taxAmount * rate)}</span></div>
+                <div class="result-line result-sub"><span>是否達免稅門檻（未稅¥5,000以上）</span><span>${eligible ? '✅ 符合' : '❌ 未達門檻'}</span></div>
+            `;
+        }
+
+        // 8. 東京現在時間 + 手動換算（東京全年比台灣快1小時，無夏令時間）
+        const TOKYO_OFFSET_HOURS = 1; // 東京時間 = 台灣時間 + 1
+
+        function updateNowClocksTokyo() {
+            const now = new Date();
+            const twT = new Intl.DateTimeFormat('zh-TW', { timeZone: 'Asia/Taipei', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+            const twD = new Intl.DateTimeFormat('zh-TW', { timeZone: 'Asia/Taipei', month: '2-digit', day: '2-digit', weekday: 'short' });
+            const tT = new Intl.DateTimeFormat('zh-TW', { timeZone: 'Asia/Tokyo', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+            const tD = new Intl.DateTimeFormat('zh-TW', { timeZone: 'Asia/Tokyo', month: '2-digit', day: '2-digit', weekday: 'short' });
+
+            const clockTaiwanTokyoEl = document.getElementById('clockTaiwanTokyo');
+            if (clockTaiwanTokyoEl) {
+                clockTaiwanTokyoEl.textContent = twT.format(now);
+                document.getElementById('dateTaiwanTokyo').textContent = twD.format(now);
+                document.getElementById('clockTokyo').textContent = tT.format(now);
+                document.getElementById('dateTokyo').textContent = tD.format(now);
+            }
+        }
+
+        function convertTwToTokyo() {
+            const val = document.getElementById('twInputTokyo').value;
+            if (!val) { alert('請先輸入台灣時間'); return; }
+            const d = new Date(val);
+            d.setHours(d.getHours() + TOKYO_OFFSET_HOURS);
+            document.getElementById('tokyoInput').value = toLocalInputValue(d);
+        }
+
+        function convertTokyoToTw() {
+            const val = document.getElementById('tokyoInput').value;
+            if (!val) { alert('請先輸入東京時間'); return; }
+            const d = new Date(val);
+            d.setHours(d.getHours() - TOKYO_OFFSET_HOURS);
+            document.getElementById('twInputTokyo').value = toLocalInputValue(d);
         }
     </script>
 </body>
