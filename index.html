@@ -516,6 +516,34 @@
             color: var(--primary-dark);
         }
 
+        .phrase-en-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .speak-btn {
+            flex-shrink: 0;
+            background-color: var(--tag-blue);
+            color: var(--tag-blue-text);
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .speak-btn:active {
+            background-color: var(--primary);
+            color: white;
+        }
+
         .phrase-zh {
             font-size: 0.88rem;
             color: var(--text-main);
@@ -542,18 +570,18 @@
             <button class="trip-btn" onclick="switchTrip('add')">➕ 新增行程</button>
         </div>
         <div class="tab-bar" id="tabBarUsc">
-            <button class="tab-btn active" onclick="switchTab('itinerary')">📅 每日行程</button>
-            <button class="tab-btn" onclick="switchTab('checklist')">✅ 檢查清單</button>
-            <button class="tab-btn" onclick="switchTab('tools')">🧰 實用工具</button>
-            <button class="tab-btn" onclick="switchTab('english')">🗣️ 實用英文</button>
-            <button class="tab-btn" onclick="switchTab('luggage')">🧳 行李須知</button>
+            <button class="tab-btn active" data-tab="itinerary" onclick="switchTab('itinerary')">📅 每日行程</button>
+            <button class="tab-btn" data-tab="checklist" onclick="switchTab('checklist')">✅ 檢查清單</button>
+            <button class="tab-btn" data-tab="tools" onclick="switchTab('tools')">🧰 實用工具</button>
+            <button class="tab-btn" data-tab="english" onclick="switchTab('english')">🗣️ 實用英文</button>
+            <button class="tab-btn" data-tab="luggage" onclick="switchTab('luggage')">🧳 行李須知</button>
         </div>
         <div class="tab-bar" id="tabBarTokyo" style="display:none;">
-            <button class="tab-btn active" onclick="switchTab('tokyo_itinerary')">📅 每日行程</button>
-            <button class="tab-btn" onclick="switchTab('tokyo_checklist')">✅ 檢查清單</button>
-            <button class="tab-btn" onclick="switchTab('tokyo_tools')">🧰 實用工具</button>
-            <button class="tab-btn" onclick="switchTab('tokyo_japanese')">🗣️ 實用日文</button>
-            <button class="tab-btn" onclick="switchTab('tokyo_luggage')">🧳 行李須知</button>
+            <button class="tab-btn active" data-tab="tokyo_itinerary" onclick="switchTab('tokyo_itinerary')">📅 每日行程</button>
+            <button class="tab-btn" data-tab="tokyo_checklist" onclick="switchTab('tokyo_checklist')">✅ 檢查清單</button>
+            <button class="tab-btn" data-tab="tokyo_tools" onclick="switchTab('tokyo_tools')">🧰 實用工具</button>
+            <button class="tab-btn" data-tab="tokyo_japanese" onclick="switchTab('tokyo_japanese')">🗣️ 實用日文</button>
+            <button class="tab-btn" data-tab="tokyo_luggage" onclick="switchTab('tokyo_luggage')">🧳 行李須知</button>
         </div>
     </div>
 
@@ -1077,35 +1105,56 @@
             <div class="card">
                 <h3 class="list-title">🛃 海關／入境英文</h3>
                 <div class="phrase-item">
-                    <div class="phrase-en">What is the purpose of your visit?</div>
+                    <div class="phrase-en-row">
+                        <span class="phrase-en">What is the purpose of your visit?</span>
+                        <button class="speak-btn" data-speak-text="What is the purpose of your visit?" data-speak-lang="en-US">🔊</button>
+                    </div>
                     <div class="phrase-zh">您此行的目的是？</div>
                     <div class="phrase-reply">→ Tourism. / Sightseeing.（觀光旅遊。）</div>
                 </div>
                 <div class="phrase-item">
-                    <div class="phrase-en">How long will you be staying?</div>
+                    <div class="phrase-en-row">
+                        <span class="phrase-en">How long will you be staying?</span>
+                        <button class="speak-btn" data-speak-text="How long will you be staying?" data-speak-lang="en-US">🔊</button>
+                    </div>
                     <div class="phrase-zh">您會停留多久？</div>
                     <div class="phrase-reply">→ About ten days.（大約十天。）</div>
                 </div>
                 <div class="phrase-item">
-                    <div class="phrase-en">Where will you be staying?</div>
+                    <div class="phrase-en-row">
+                        <span class="phrase-en">Where will you be staying?</span>
+                        <button class="speak-btn" data-speak-text="Where will you be staying?" data-speak-lang="en-US">🔊</button>
+                    </div>
                     <div class="phrase-zh">您會住在哪裡？</div>
                     <div class="phrase-reply">→ At hotels. Here is my itinerary.（住飯店，這是我的行程表。）</div>
                 </div>
                 <div class="phrase-item">
-                    <div class="phrase-en">Do you have anything to declare?</div>
+                    <div class="phrase-en-row">
+                        <span class="phrase-en">Do you have anything to declare?</span>
+                        <button class="speak-btn" data-speak-text="Do you have anything to declare?" data-speak-lang="en-US">🔊</button>
+                    </div>
                     <div class="phrase-zh">您有東西需要申報嗎？</div>
                     <div class="phrase-reply">→ No, nothing to declare.（沒有，沒有東西要申報。）</div>
                 </div>
                 <div class="phrase-item">
-                    <div class="phrase-en">This is for personal use.</div>
+                    <div class="phrase-en-row">
+                        <span class="phrase-en">This is for personal use.</span>
+                        <button class="speak-btn" data-speak-text="This is for personal use." data-speak-lang="en-US">🔊</button>
+                    </div>
                     <div class="phrase-zh">這是我自己使用的。</div>
                 </div>
                 <div class="phrase-item">
-                    <div class="phrase-en">Here is my passport / boarding pass / customs form.</div>
+                    <div class="phrase-en-row">
+                        <span class="phrase-en">Here is my passport / boarding pass / customs form.</span>
+                        <button class="speak-btn" data-speak-text="Here is my passport / boarding pass / customs form." data-speak-lang="en-US">🔊</button>
+                    </div>
                     <div class="phrase-zh">這是我的護照／登機證／申報單。</div>
                 </div>
                 <div class="phrase-item">
-                    <div class="phrase-en">I'm traveling with a tour group.</div>
+                    <div class="phrase-en-row">
+                        <span class="phrase-en">I'm traveling with a tour group.</span>
+                        <button class="speak-btn" data-speak-text="I'm traveling with a tour group." data-speak-lang="en-US">🔊</button>
+                    </div>
                     <div class="phrase-zh">我跟團旅遊。</div>
                 </div>
             </div>
@@ -1113,39 +1162,66 @@
             <div class="card">
                 <h3 class="list-title">🛍️ 購物英文</h3>
                 <div class="phrase-item">
-                    <div class="phrase-en">How much is this?</div>
+                    <div class="phrase-en-row">
+                        <span class="phrase-en">How much is this?</span>
+                        <button class="speak-btn" data-speak-text="How much is this?" data-speak-lang="en-US">🔊</button>
+                    </div>
                     <div class="phrase-zh">這個多少錢？</div>
                 </div>
                 <div class="phrase-item">
-                    <div class="phrase-en">Can I try this on?</div>
+                    <div class="phrase-en-row">
+                        <span class="phrase-en">Can I try this on?</span>
+                        <button class="speak-btn" data-speak-text="Can I try this on?" data-speak-lang="en-US">🔊</button>
+                    </div>
                     <div class="phrase-zh">我可以試穿嗎？</div>
                 </div>
                 <div class="phrase-item">
-                    <div class="phrase-en">Where is the fitting room?</div>
+                    <div class="phrase-en-row">
+                        <span class="phrase-en">Where is the fitting room?</span>
+                        <button class="speak-btn" data-speak-text="Where is the fitting room?" data-speak-lang="en-US">🔊</button>
+                    </div>
                     <div class="phrase-zh">試衣間在哪裡？</div>
                 </div>
                 <div class="phrase-item">
-                    <div class="phrase-en">Do you have a bigger / smaller size?</div>
+                    <div class="phrase-en-row">
+                        <span class="phrase-en">Do you have a bigger / smaller size?</span>
+                        <button class="speak-btn" data-speak-text="Do you have a bigger / smaller size?" data-speak-lang="en-US">🔊</button>
+                    </div>
                     <div class="phrase-zh">有大一點／小一點的尺寸嗎？</div>
                 </div>
                 <div class="phrase-item">
-                    <div class="phrase-en">Is this on sale? / Is there a discount?</div>
+                    <div class="phrase-en-row">
+                        <span class="phrase-en">Is this on sale? / Is there a discount?</span>
+                        <button class="speak-btn" data-speak-text="Is this on sale? / Is there a discount?" data-speak-lang="en-US">🔊</button>
+                    </div>
                     <div class="phrase-zh">這個有打折嗎？</div>
                 </div>
                 <div class="phrase-item">
-                    <div class="phrase-en">I'll take this one, please.</div>
+                    <div class="phrase-en-row">
+                        <span class="phrase-en">I'll take this one, please.</span>
+                        <button class="speak-btn" data-speak-text="I'll take this one, please." data-speak-lang="en-US">🔊</button>
+                    </div>
                     <div class="phrase-zh">我要買這個，謝謝。</div>
                 </div>
                 <div class="phrase-item">
-                    <div class="phrase-en">Do you accept credit cards?</div>
+                    <div class="phrase-en-row">
+                        <span class="phrase-en">Do you accept credit cards?</span>
+                        <button class="speak-btn" data-speak-text="Do you accept credit cards?" data-speak-lang="en-US">🔊</button>
+                    </div>
                     <div class="phrase-zh">可以刷卡嗎？</div>
                 </div>
                 <div class="phrase-item">
-                    <div class="phrase-en">Can I get a tax refund on this?</div>
+                    <div class="phrase-en-row">
+                        <span class="phrase-en">Can I get a tax refund on this?</span>
+                        <button class="speak-btn" data-speak-text="Can I get a tax refund on this?" data-speak-lang="en-US">🔊</button>
+                    </div>
                     <div class="phrase-zh">這個可以退稅嗎？</div>
                 </div>
                 <div class="phrase-item">
-                    <div class="phrase-en">Just looking, thank you.</div>
+                    <div class="phrase-en-row">
+                        <span class="phrase-en">Just looking, thank you.</span>
+                        <button class="speak-btn" data-speak-text="Just looking, thank you." data-speak-lang="en-US">🔊</button>
+                    </div>
                     <div class="phrase-zh">我只是看看，謝謝。</div>
                 </div>
             </div>
@@ -1153,43 +1229,73 @@
             <div class="card">
                 <h3 class="list-title">🍽️ 飲食英文</h3>
                 <div class="phrase-item">
-                    <div class="phrase-en">A table for two, please.</div>
+                    <div class="phrase-en-row">
+                        <span class="phrase-en">A table for two, please.</span>
+                        <button class="speak-btn" data-speak-text="A table for two, please." data-speak-lang="en-US">🔊</button>
+                    </div>
                     <div class="phrase-zh">麻煩，兩位。</div>
                 </div>
                 <div class="phrase-item">
-                    <div class="phrase-en">Can I see the menu, please?</div>
+                    <div class="phrase-en-row">
+                        <span class="phrase-en">Can I see the menu, please?</span>
+                        <button class="speak-btn" data-speak-text="Can I see the menu, please?" data-speak-lang="en-US">🔊</button>
+                    </div>
                     <div class="phrase-zh">可以給我看菜單嗎？</div>
                 </div>
                 <div class="phrase-item">
-                    <div class="phrase-en">I'd like this one, please. / I'll have the same.</div>
+                    <div class="phrase-en-row">
+                        <span class="phrase-en">I'd like this one, please. / I'll have the same.</span>
+                        <button class="speak-btn" data-speak-text="I'd like this one, please. / I'll have the same." data-speak-lang="en-US">🔊</button>
+                    </div>
                     <div class="phrase-zh">我要點這個。／跟他一樣。</div>
                 </div>
                 <div class="phrase-item">
-                    <div class="phrase-en">No onions / no cilantro, please.</div>
+                    <div class="phrase-en-row">
+                        <span class="phrase-en">No onions / no cilantro, please.</span>
+                        <button class="speak-btn" data-speak-text="No onions / no cilantro, please." data-speak-lang="en-US">🔊</button>
+                    </div>
                     <div class="phrase-zh">請不要放洋蔥／香菜。</div>
                 </div>
                 <div class="phrase-item">
-                    <div class="phrase-en">Is there a vegetarian option?</div>
+                    <div class="phrase-en-row">
+                        <span class="phrase-en">Is there a vegetarian option?</span>
+                        <button class="speak-btn" data-speak-text="Is there a vegetarian option?" data-speak-lang="en-US">🔊</button>
+                    </div>
                     <div class="phrase-zh">有素食的選項嗎？</div>
                 </div>
                 <div class="phrase-item">
-                    <div class="phrase-en">Water, please. Tap water is fine.</div>
+                    <div class="phrase-en-row">
+                        <span class="phrase-en">Water, please. Tap water is fine.</span>
+                        <button class="speak-btn" data-speak-text="Water, please. Tap water is fine." data-speak-lang="en-US">🔊</button>
+                    </div>
                     <div class="phrase-zh">請給我水，自來水就可以。</div>
                 </div>
                 <div class="phrase-item">
-                    <div class="phrase-en">Could we get some more napkins / chopsticks?</div>
+                    <div class="phrase-en-row">
+                        <span class="phrase-en">Could we get some more napkins / chopsticks?</span>
+                        <button class="speak-btn" data-speak-text="Could we get some more napkins / chopsticks?" data-speak-lang="en-US">🔊</button>
+                    </div>
                     <div class="phrase-zh">可以再給我們一些餐巾紙／筷子嗎？</div>
                 </div>
                 <div class="phrase-item">
-                    <div class="phrase-en">Check, please. / Can we get the bill?</div>
+                    <div class="phrase-en-row">
+                        <span class="phrase-en">Check, please. / Can we get the bill?</span>
+                        <button class="speak-btn" data-speak-text="Check, please. / Can we get the bill?" data-speak-lang="en-US">🔊</button>
+                    </div>
                     <div class="phrase-zh">買單，謝謝。</div>
                 </div>
                 <div class="phrase-item">
-                    <div class="phrase-en">Excuse me, where is the restroom?</div>
+                    <div class="phrase-en-row">
+                        <span class="phrase-en">Excuse me, where is the restroom?</span>
+                        <button class="speak-btn" data-speak-text="Excuse me, where is the restroom?" data-speak-lang="en-US">🔊</button>
+                    </div>
                     <div class="phrase-zh">請問洗手間在哪裡？</div>
                 </div>
                 <div class="phrase-item">
-                    <div class="phrase-en">It was delicious, thank you!</div>
+                    <div class="phrase-en-row">
+                        <span class="phrase-en">It was delicious, thank you!</span>
+                        <button class="speak-btn" data-speak-text="It was delicious, thank you!" data-speak-lang="en-US">🔊</button>
+                    </div>
                     <div class="phrase-zh">很好吃，謝謝！</div>
                 </div>
             </div>
@@ -1514,65 +1620,107 @@
                 <div class="card">
                     <h3 class="list-title">🛂 海關／入境常用日文</h3>
                     <div class="phrase-item">
-                        <div class="phrase-en">観光です（Kankou desu）</div>
+                        <div class="phrase-en-row">
+                        <span class="phrase-en">観光です（Kankou desu）</span>
+                        <button class="speak-btn" data-speak-text="観光です" data-speak-lang="ja-JP">🔊</button>
+                    </div>
                         <div class="phrase-zh">觀光。（用於回答入境目的）</div>
                     </div>
                     <div class="phrase-item">
-                        <div class="phrase-en">4泊です（Yonhaku desu）</div>
+                        <div class="phrase-en-row">
+                        <span class="phrase-en">4泊です（Yonhaku desu）</span>
+                        <button class="speak-btn" data-speak-text="4泊です" data-speak-lang="ja-JP">🔊</button>
+                    </div>
                         <div class="phrase-zh">住4晚。（依實際晚數替換數字）</div>
                     </div>
                     <div class="phrase-item">
-                        <div class="phrase-en">申告するものはありません（Shinkoku suru mono wa arimasen）</div>
+                        <div class="phrase-en-row">
+                        <span class="phrase-en">申告するものはありません（Shinkoku suru mono wa arimasen）</span>
+                        <button class="speak-btn" data-speak-text="申告するものはありません" data-speak-lang="ja-JP">🔊</button>
+                    </div>
                         <div class="phrase-zh">沒有東西需要申報。</div>
                     </div>
                 </div>
                 <div class="card">
                     <h3 class="list-title">🛍️ 購物日文</h3>
                     <div class="phrase-item">
-                        <div class="phrase-en">これはいくらですか？（Kore wa ikura desu ka?）</div>
+                        <div class="phrase-en-row">
+                        <span class="phrase-en">これはいくらですか？（Kore wa ikura desu ka?）</span>
+                        <button class="speak-btn" data-speak-text="これはいくらですか？" data-speak-lang="ja-JP">🔊</button>
+                    </div>
                         <div class="phrase-zh">這個多少錢？</div>
                     </div>
                     <div class="phrase-item">
-                        <div class="phrase-en">試着してもいいですか？（Shichaku shite mo ii desu ka?）</div>
+                        <div class="phrase-en-row">
+                        <span class="phrase-en">試着してもいいですか？（Shichaku shite mo ii desu ka?）</span>
+                        <button class="speak-btn" data-speak-text="試着してもいいですか？" data-speak-lang="ja-JP">🔊</button>
+                    </div>
                         <div class="phrase-zh">可以試穿嗎？</div>
                     </div>
                     <div class="phrase-item">
-                        <div class="phrase-en">クレジットカードは使えますか？（Kurejitto kaado wa tsukaemasu ka?）</div>
+                        <div class="phrase-en-row">
+                        <span class="phrase-en">クレジットカードは使えますか？（Kurejitto kaado wa tsukaemasu ka?）</span>
+                        <button class="speak-btn" data-speak-text="クレジットカードは使えますか？" data-speak-lang="ja-JP">🔊</button>
+                    </div>
                         <div class="phrase-zh">可以刷卡嗎？</div>
                     </div>
                     <div class="phrase-item">
-                        <div class="phrase-en">免税できますか？（Menzei dekimasu ka?）</div>
+                        <div class="phrase-en-row">
+                        <span class="phrase-en">免税できますか？（Menzei dekimasu ka?）</span>
+                        <button class="speak-btn" data-speak-text="免税できますか？" data-speak-lang="ja-JP">🔊</button>
+                    </div>
                         <div class="phrase-zh">可以免稅嗎？</div>
                     </div>
                     <div class="phrase-item">
-                        <div class="phrase-en">これをください（Kore wo kudasai）</div>
+                        <div class="phrase-en-row">
+                        <span class="phrase-en">これをください（Kore wo kudasai）</span>
+                        <button class="speak-btn" data-speak-text="これをください" data-speak-lang="ja-JP">🔊</button>
+                    </div>
                         <div class="phrase-zh">我要這個，謝謝。</div>
                     </div>
                 </div>
                 <div class="card">
                     <h3 class="list-title">🍽️ 飲食日文</h3>
                     <div class="phrase-item">
-                        <div class="phrase-en">二人です（Futari desu）</div>
+                        <div class="phrase-en-row">
+                        <span class="phrase-en">二人です（Futari desu）</span>
+                        <button class="speak-btn" data-speak-text="二人です" data-speak-lang="ja-JP">🔊</button>
+                    </div>
                         <div class="phrase-zh">兩位。</div>
                     </div>
                     <div class="phrase-item">
-                        <div class="phrase-en">メニューを見せてください（Menyuu wo misete kudasai）</div>
+                        <div class="phrase-en-row">
+                        <span class="phrase-en">メニューを見せてください（Menyuu wo misete kudasai）</span>
+                        <button class="speak-btn" data-speak-text="メニューを見せてください" data-speak-lang="ja-JP">🔊</button>
+                    </div>
                         <div class="phrase-zh">請給我看菜單。</div>
                     </div>
                     <div class="phrase-item">
-                        <div class="phrase-en">おすすめは何ですか？（Osusume wa nan desu ka?）</div>
+                        <div class="phrase-en-row">
+                        <span class="phrase-en">おすすめは何ですか？（Osusume wa nan desu ka?）</span>
+                        <button class="speak-btn" data-speak-text="おすすめは何ですか？" data-speak-lang="ja-JP">🔊</button>
+                    </div>
                         <div class="phrase-zh">有推薦的嗎？</div>
                     </div>
                     <div class="phrase-item">
-                        <div class="phrase-en">お会計お願いします（Okaikei onegaishimasu）</div>
+                        <div class="phrase-en-row">
+                        <span class="phrase-en">お会計お願いします（Okaikei onegaishimasu）</span>
+                        <button class="speak-btn" data-speak-text="お会計お願いします" data-speak-lang="ja-JP">🔊</button>
+                    </div>
                         <div class="phrase-zh">買單，謝謝。</div>
                     </div>
                     <div class="phrase-item">
-                        <div class="phrase-en">すみません、トイレはどこですか？（Sumimasen, toire wa doko desu ka?）</div>
+                        <div class="phrase-en-row">
+                        <span class="phrase-en">すみません、トイレはどこですか？（Sumimasen, toire wa doko desu ka?）</span>
+                        <button class="speak-btn" data-speak-text="すみません、トイレはどこですか？" data-speak-lang="ja-JP">🔊</button>
+                    </div>
                         <div class="phrase-zh">請問洗手間在哪裡？</div>
                     </div>
                     <div class="phrase-item">
-                        <div class="phrase-en">おいしかったです（Oishikatta desu）</div>
+                        <div class="phrase-en-row">
+                        <span class="phrase-en">おいしかったです（Oishikatta desu）</span>
+                        <button class="speak-btn" data-speak-text="おいしかったです" data-speak-lang="ja-JP">🔊</button>
+                    </div>
                         <div class="phrase-zh">很好吃。</div>
                     </div>
                 </div>
@@ -1640,6 +1788,18 @@
         };
 
         const tabBarIdMap = { usc: 'tabBarUsc', tokyo: 'tabBarTokyo' };
+        const defaultTabPerTrip = { usc: 'itinerary', tokyo: 'tokyo_itinerary' };
+
+        // 記住每個行程上次瀏覽到的頁籤（先讀 localStorage，沒有的話用預設值）
+        const lastTabPerTrip = { ...defaultTabPerTrip };
+        Object.keys(defaultTabPerTrip).forEach(t => {
+            const saved = localStorage.getItem('lastTab_' + t);
+            if (saved) lastTabPerTrip[t] = saved;
+        });
+
+        function tripIdFromTab(tabId) {
+            return tabId.startsWith('tokyo_') ? 'tokyo' : 'usc';
+        }
 
         function switchTrip(tripId) {
             document.querySelectorAll('.trip-content').forEach(el => el.classList.remove('active'));
@@ -1651,7 +1811,11 @@
             // 只有真正有頁籤的行程才顯示自己的頁籤列，其餘先隱藏
             document.querySelectorAll('.tab-bar').forEach(bar => bar.style.display = 'none');
             const barId = tabBarIdMap[tripId];
-            if (barId) document.getElementById(barId).style.display = 'flex';
+            if (barId) {
+                document.getElementById(barId).style.display = 'flex';
+                // 跳回這個行程上次瀏覽的頁籤
+                switchTab(lastTabPerTrip[tripId] || defaultTabPerTrip[tripId]);
+            }
 
             const meta = tripMeta[tripId];
             if (meta) {
@@ -1662,7 +1826,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // 1. 處理頁籤切換
+        // 1. 處理頁籤切換（同時記住這是該行程目前選到的頁籤）
         function switchTab(tabId) {
             // 切換 active 內容
             document.querySelectorAll('.tab-content').forEach(content => {
@@ -1670,11 +1834,19 @@
             });
             document.getElementById(tabId).classList.add('active');
 
-            // 切換按鈕樣式
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.currentTarget.classList.add('active');
+            // 只更新「目前顯示中的那個頁籤列」裡的按鈕樣式
+            const tripId = tripIdFromTab(tabId);
+            const barId = tabBarIdMap[tripId];
+            const bar = barId ? document.getElementById(barId) : null;
+            if (bar) {
+                bar.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                const activeBtn = bar.querySelector('[data-tab="' + tabId + '"]');
+                if (activeBtn) activeBtn.classList.add('active');
+            }
+
+            // 記住這個行程最後選到的頁籤，下次切換回來時自動恢復
+            lastTabPerTrip[tripId] = tabId;
+            localStorage.setItem('lastTab_' + tripId, tabId);
 
             // 切換時自動滾動回頂部，體驗更好
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1719,7 +1891,27 @@
             calcJapanTax();
             updateNowClocksTokyo();
             setInterval(updateNowClocksTokyo, 1000);
+
+            // 綁定所有語音朗讀按鈕
+            document.querySelectorAll('.speak-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    speakText(btn.dataset.speakText, btn.dataset.speakLang);
+                });
+            });
         });
+
+        // 語音朗讀（使用瀏覽器內建 Web Speech API，不需額外安裝）
+        function speakText(text, lang) {
+            if (!('speechSynthesis' in window)) {
+                alert('您的瀏覽器不支援語音朗讀功能');
+                return;
+            }
+            window.speechSynthesis.cancel(); // 停止正在播放的語音，避免重疊
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = lang;
+            utterance.rate = 0.9;
+            window.speechSynthesis.speak(utterance);
+        }
 
         // 輔助函式：切換文字劃掉線樣式
         function updateItemStyle(checkbox) {
