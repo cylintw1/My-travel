@@ -1,14 +1,22 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "mytravel",
+  "main": "worker.js",
   "compatibility_date": "2026-07-15",
   "observability": {
     "enabled": true
   },
   "assets": {
-    "directory": "."
+    "directory": ".",
+    "binding": "ASSETS"
   },
   "compatibility_flags": [
     "nodejs_compat"
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "ORDERS",
+      "id": "2b08f9da146f4cff89d0e7a96df5f682"
+    }
   ]
 }
