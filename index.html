@@ -2244,32 +2244,119 @@
 
         const MENUS = {
             innout: [
-                '漢堡 Hamburger',
-                '起司漢堡 Cheeseburger',
-                'Double-Double（雙層牛肉起司堡）',
-                '薯條 French Fries',
-                'Animal Style 薯條（起司＋醬料＋炒洋蔥）',
-                '奶昔 Shake - 巧克力',
-                '奶昔 Shake - 香草',
-                '奶昔 Shake - 草莓',
-                '汽水 Soft Drink',
-                '其他／自訂（Animal Style／Protein Style／3x3／4x4 等請寫在備註）'
+                { type: 'header', label: '🍔 漢堡' },
+                { type: 'item', name: 'Double-Double（雙層牛肉、雙層起司）' },
+                { type: 'item', name: 'Cheeseburger（單層牛肉、單層起司）' },
+                { type: 'item', name: 'Hamburger（單層牛肉，無起司）' },
+
+                { type: 'header', label: '⭐ 隱藏菜單（漢堡）' },
+                { type: 'item', name: 'Double-Double Animal Style（雙層牛肉雙層起司＋芥末煎牛肉、烤洋蔥、酸黃瓜、特製醬）' },
+                { type: 'item', name: 'Cheeseburger Animal Style' },
+                { type: 'item', name: 'Hamburger Animal Style' },
+                { type: 'item', name: 'Protein Style（生菜包取代麵包）' },
+                { type: 'item', name: '3×3（三層牛肉、三層起司）' },
+                { type: 'item', name: '4×4（四層牛肉、四層起司）' },
+                { type: 'item', name: 'Flying Dutchman（兩片牛肉夾兩片起司，無麵包）' },
+                { type: 'item', name: 'Grilled Cheese（烤起司漢堡，無牛肉）' },
+                { type: 'item', name: 'Veggie Sandwich（蔬菜漢堡，無牛肉無起司）' },
+
+                { type: 'header', label: '🍟 薯條' },
+                { type: 'item', name: 'Fries（現炸薯條）' },
+                { type: 'item', name: 'Animal Style Fries（薯條加起司、烤洋蔥、特製醬）' },
+                { type: 'item', name: 'Well Done Fries（炸得較酥脆）' },
+                { type: 'item', name: 'Light Fries（炸得較軟、顏色較淺）' },
+                { type: 'item', name: 'Light Well Fries（介於普通與 Well Done 之間）' },
+
+                { type: 'header', label: '🥤 飲料' },
+                { type: 'item', name: 'Coca-Cola（可口可樂）' },
+                { type: 'item', name: 'Diet Coke（健怡可樂）' },
+                { type: 'item', name: '7UP（七喜）' },
+                { type: 'item', name: 'Dr Pepper（胡椒博士）' },
+                { type: 'item', name: 'Root Beer（沙士）' },
+                { type: 'item', name: 'Pink Lemonade（粉紅檸檬汁）' },
+                { type: 'item', name: 'Lite Pink Lemonade（低糖粉紅檸檬汁）' },
+                { type: 'item', name: 'Lemonade（檸檬汁）' },
+                { type: 'item', name: 'Iced Tea（冰紅茶，無糖）' },
+                { type: 'item', name: 'Sweet Tea（甜冰茶，部分門市供應）' },
+                { type: 'item', name: 'Coffee（咖啡）' },
+                { type: 'item', name: 'Hot Cocoa（熱可可，季節限定）' },
+
+                { type: 'header', label: '🥛 奶昔' },
+                { type: 'item', name: 'Chocolate Shake（巧克力奶昔）' },
+                { type: 'item', name: 'Vanilla Shake（香草奶昔）' },
+                { type: 'item', name: 'Strawberry Shake（草莓奶昔）' },
+                { type: 'item', name: 'Neapolitan Shake（綜合奶昔：巧克力＋香草＋草莓）' },
+
+                { type: 'header', label: '🧅 常見客製化（可另外加一行點餐，跟主餐一起跟店員說）' },
+                { type: 'item', name: 'Raw Onion（生洋蔥）' },
+                { type: 'item', name: 'Chopped Onion（切碎生洋蔥）' },
+                { type: 'item', name: 'Grilled Onion（烤洋蔥）' },
+                { type: 'item', name: 'Whole Grilled Onion（整片烤洋蔥）' },
+                { type: 'item', name: 'No Onion（不加洋蔥）' },
+                { type: 'item', name: 'Extra Spread（加量特製醬）' },
+                { type: 'item', name: 'No Spread（不加特製醬）' },
+                { type: 'item', name: 'Pickles（加酸黃瓜）' },
+                { type: 'item', name: 'Extra Pickles（酸黃瓜加量）' },
+                { type: 'item', name: 'Chopped Chilies（加碎辣椒）' },
+                { type: 'item', name: 'Mustard Fried Patty（牛肉排以黃芥末煎製）' },
+                { type: 'item', name: 'Extra Toast（麵包烤得更酥）' },
+                { type: 'item', name: 'No Salt（不加鹽）' },
+                { type: 'item', name: 'Cut in Half（對切）' },
+                { type: 'item', name: 'Extra Patty（加一片牛肉）' },
+                { type: 'item', name: 'Extra Cheese（加一片起司）' }
             ],
             panda: [
-                '碗餐 Bowl（1主菜＋1配菜）',
-                '盤餐 Plate（2主菜＋1配菜）',
-                '大盤 Bigger Plate（3主菜＋1配菜）',
-                '主菜：橙汁雞 Orange Chicken',
-                '主菜：北京牛肉 Beijing Beef',
-                '主菜：宮保雞丁 Kung Pao Chicken',
-                '主菜：花椒牛肉 Black Pepper Chicken',
-                '主菜：青花菜牛肉 Broccoli Beef',
-                '主菜：蜂蜜核桃蝦 Honey Walnut Shrimp（需加價）',
-                '配菜：炒麵 Chow Mein',
-                '配菜：炒飯 Fried Rice',
-                '配菜：白飯 White Rice',
-                '配菜：時蔬 Super Greens',
-                '飲料 Drink'
+                { type: 'header', label: '🍱 套餐' },
+                { type: 'item', name: 'Bowl（1份主食＋1樣主菜）' },
+                { type: 'item', name: 'Plate（1份主食＋2樣主菜）' },
+                { type: 'item', name: 'Bigger Plate（1份主食＋3樣主菜）' },
+                { type: 'item', name: 'Family Meal（家庭分享餐，多份主食＋多份主菜）' },
+                { type: 'item', name: 'Panda Cub Meal（兒童餐：小份主食＋小份主菜＋水果＋飲料）' },
+
+                { type: 'header', label: '🍚 主食（Base）' },
+                { type: 'item', name: 'Chow Mein（炒麵）' },
+                { type: 'item', name: 'Fried Rice（炒飯）' },
+                { type: 'item', name: 'White Steamed Rice（白飯）' },
+                { type: 'item', name: 'Brown Steamed Rice（糙米飯，部分門市）' },
+                { type: 'item', name: 'Super Greens（綜合青菜：花椰菜、高麗菜、羽衣甘藍）' },
+
+                { type: 'header', label: '🍗 主菜（Entrees）' },
+                { type: 'item', name: 'Original Orange Chicken（招牌橘子雞）' },
+                { type: 'item', name: 'Kung Pao Chicken（宮保雞丁）' },
+                { type: 'item', name: 'Black Pepper Chicken（黑胡椒雞）' },
+                { type: 'item', name: 'Grilled Teriyaki Chicken（照燒烤雞）' },
+                { type: 'item', name: 'String Bean Chicken Breast（四季豆雞胸）' },
+                { type: 'item', name: 'Mushroom Chicken（蘑菇雞）' },
+                { type: 'item', name: 'Broccoli Beef（花椰菜牛肉）' },
+                { type: 'item', name: 'Beijing Beef（北京牛肉）' },
+                { type: 'item', name: 'Honey Walnut Shrimp（蜜汁核桃蝦，需加價）' },
+                { type: 'item', name: 'Black Pepper Sirloin Steak（黑胡椒沙朗牛，部分門市，需加價）' },
+                { type: 'item', name: 'Super Greens（綜合青菜，可當主菜）' },
+
+                { type: 'header', label: '⭐ 限定／季節商品' },
+                { type: 'item', name: 'Hot Orange Chicken（香辣橘子雞，期間限定）' },
+
+                { type: 'header', label: '🥟 點心' },
+                { type: 'item', name: 'Chicken Egg Roll（雞肉春捲）' },
+                { type: 'item', name: 'Veggie Spring Roll（蔬菜春捲）' },
+                { type: 'item', name: 'Cream Cheese Rangoon（奶油乳酪雲吞）' },
+
+                { type: 'header', label: '🥤 飲料' },
+                { type: 'item', name: 'Soft Drinks（汽水）' },
+                { type: 'item', name: 'Iced Tea（冰茶）' },
+                { type: 'item', name: 'Lemonade（檸檬汁）' },
+                { type: 'item', name: 'Bottled Water（瓶裝水）' },
+                { type: 'item', name: 'Apple Juice（蘋果汁，兒童餐）' },
+
+                { type: 'header', label: '🥡 常見客製化（可另外加一行點餐，跟主餐一起跟店員說）' },
+                { type: 'item', name: 'Half Chow Mein, Half Fried Rice（炒麵＋炒飯各半）' },
+                { type: 'item', name: 'Extra Entree（加點一份主菜）' },
+                { type: 'item', name: 'Extra Side（加點一份主食）' },
+                { type: 'item', name: 'No Sauce（不加醬）' },
+                { type: 'item', name: 'Sauce on the Side（醬料另外放）' },
+                { type: 'item', name: 'No Vegetables（不要蔬菜，依餐點而定）' },
+                { type: 'item', name: 'Extra Vegetables（多加蔬菜，依門市供應）' },
+                { type: 'item', name: 'Premium Upgrade（升級加價主菜，如蜜汁核桃蝦、黑胡椒沙朗牛）' }
             ],
             toadstool: [
                 '瑪利歐漢堡 Mario Burger（培根蘑菇起司）',
@@ -2319,22 +2406,32 @@
             renderOrderSummary();
         }
 
+        function menuItemName(restaurant, idx) {
+            const entry = MENUS[restaurant][idx];
+            return typeof entry === 'string' ? entry : entry.name;
+        }
+
         function renderMenu(restaurant) {
             const listIdMap = { innout: 'menuListInnout', panda: 'menuListPanda', toadstool: 'menuListToadstool' };
             const container = document.getElementById(listIdMap[restaurant]);
             if (!container) return;
 
-            container.innerHTML = MENUS[restaurant].map((item, idx) => `
+            container.innerHTML = MENUS[restaurant].map((entry, idx) => {
+                if (typeof entry === 'object' && entry.type === 'header') {
+                    return `<h4 style="margin:14px 0 4px 0; font-size:0.88rem; color:var(--text-sub);">${entry.label}</h4>`;
+                }
+                const name = typeof entry === 'string' ? entry : entry.name;
+                return `
                 <div class="menu-item-row">
-                    <span class="menu-item-name">${item}</span>
+                    <span class="menu-item-name">${name}</span>
                     <div class="qty-stepper">
                         <button class="qty-btn" onclick="changeQty('${restaurant}', ${idx}, -1)">－</button>
                         <span class="qty-value" id="qty_${restaurant}_${idx}">1</span>
                         <button class="qty-btn" onclick="changeQty('${restaurant}', ${idx}, 1)">＋</button>
                     </div>
                     <button class="add-item-btn" onclick="addOrderItem('${restaurant}', ${idx})">加入</button>
-                </div>
-            `).join('');
+                </div>`;
+            }).join('');
         }
 
         function changeQty(restaurant, idx, delta) {
@@ -2351,7 +2448,7 @@
             if (!apiUrl) { alert('請先在最上方設定 Worker API 網址'); return; }
             if (!person) { alert('請先填寫你的名字'); return; }
 
-            const item = MENUS[restaurant][idx];
+            const item = menuItemName(restaurant, idx);
             const qty = parseInt(document.getElementById('qty_' + restaurant + '_' + idx).textContent) || 1;
 
             try {
