@@ -1,6 +1,59 @@
-# wrangler files
-.wrangler
-.dev.vars*
-!.dev.vars.example
-.env*
+# ===== 環境變數／密鑰檔案（最重要，絕對不要上傳）=====
+.env
+.env.*
 !.env.example
+.dev.vars
+.dev.vars.*
+
+# ===== Wrangler / Cloudflare 相關 =====
+.wrangler/
+.mf/
+wrangler.toml.bak
+
+# ===== 各種金鑰、憑證、機密檔案 =====
+*.pem
+*.key
+*.crt
+*.cer
+*.p12
+*.pfx
+*.pkcs12
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+*.ppk
+credentials.json
+credentials.yml
+credentials.yaml
+secrets.json
+secrets.yml
+secrets.yaml
+*.secret
+*secret*.json
+*token*.json
+service-account*.json
+gcp-key*.json
+aws-credentials*
+
+# ===== Node / 相依套件 =====
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json.bak
+
+# ===== 作業系統／編輯器產生的檔案 =====
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ===== 暫存與備份檔 =====
+*.log
+*.tmp
+*.bak
+*.orig
